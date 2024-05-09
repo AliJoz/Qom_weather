@@ -1,5 +1,5 @@
 import React from "react";
-
+import ShowIcons from "../../../hook/Showicons/Showicons";
 interface WeatherData {
   id: number;
   temp: number;
@@ -29,51 +29,6 @@ const formatTime = (time: string) => {
 };
 
 ////// icons
-const ShowIcons = (
-  tempMin: number,
-  tempMax: number,
-  hum: number,
-  timeClock: string
-): string => {
-
-  const hour = parseInt(timeClock, 10);
-  const isDayTime = hour >= 6 && hour < 18; // بررسی روز یا شب بودن
-
-  const avgTemp = (tempMin + tempMax) / 2; // محاسبه دمای میانگین
-  let selectedIcon = "/img/404/404.jpg"; // مقدار پیش‌فرض
-
-  if (avgTemp >= 10 && avgTemp <= 20) {
-    // دمای میانگین بین 10 تا 20 درجه
-    if (hum >= 0 && hum <= 15) {
-      selectedIcon = isDayTime ? "/icons/day.svg" : "/icons/night.svg"; // آفتابی یا شب
-    } else if (hum > 15 && hum <= 30) {
-      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/cloudynight.svg"; // ابری روز یا ابری شب
-    } else if (hum > 30) {
-      selectedIcon = isDayTime ? "/icons/rainy.svg" : "/icons/thunder.svg"; // بارانی روز یا تگرگ شب
-    }
-  } else if (avgTemp > 20 && avgTemp <= 30) {
-    // دمای میانگین بین 20 تا 30 درجه
-    if (hum >= 0 && hum <= 15) {
-      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/cloudynight.svg"; // ابری روز یا ابری شب
-    } else if (hum > 15 && hum <= 30) {
-      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/cloudynight.svg"; // ابری روز یا ابری شب
-    } else if (hum > 30) {
-      selectedIcon = isDayTime ? "/icons/rainy.svg" : "/icons/thunder.svg"; // بارانی روز یا تگرگ شب
-    }
-  } else if (avgTemp > 30 && avgTemp <= 40) {
-    // دمای میانگین بین 30 تا 40 درجه
-    if (hum >= 0 && hum <= 20) {
-      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/night.svg"; // ابری آفتابی روز یا شب
-    } else if (hum > 20) {
-      selectedIcon = isDayTime ? "/icons/rainy.svg" : "/icons/thunder.svg"; // آفتابی بارانی روز یا تگرگ شب
-    }
-  } else if (avgTemp > 40) {
-    // دمای میانگین بالای 40 درجه
-    selectedIcon = isDayTime ? "/icons/day.svg" : "/icons/night.svg"; // آفتابی روز یا شب
-  }
-
-  return selectedIcon;
-};
 
 ///////
 
@@ -104,13 +59,13 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
   if (humidity === undefined || humidity === null) {
     return <div>اطلاعات در دسترس نیست</div>; // اگر هیچ رطوبت معتبری وجود ندارد
   }
-
-  const icon = ShowIcons(
-    minTemp,
-    maxTemp,
-    humidity,
-    Slicehours(formatTime(data.startTime))
-  );
+  
+  const icon = ShowIcons({
+    tempMin: minTemp,
+    tempMax: maxTemp,
+    hum: humidity,
+    timeClock: Slicehours(formatTime(data.startTime))
+  });
 
   return (
     <>
