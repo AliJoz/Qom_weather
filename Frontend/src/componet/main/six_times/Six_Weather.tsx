@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect, useRef } from "react";
-import { DataContext } from "../Axsios/DataProviderProps";
+import { DataContext } from "../../../Axsios/DataProviderProps";
 
 interface WeatherData {
   id: number;
