@@ -25,29 +25,6 @@ const WeatherDisplay: React.FC = () => {
   const [timeBlocks, setTimeBlocks] = useState<TimeBlock[]>([]);
   const previousTimeRef = useRef(new Date());
 
-  let DatasArryDays: string[] = [];
-  let DatasArryMonth: string[] = [];
-
-  //تابعی برای بیرون اوردن ماه time
-  const extractDay = (time: string): string[] => {
-    const datePart = time.split("T")[0];
-    const [Days] = datePart.split("-").slice(2, 3);
-    if (!DatasArryDays.includes(Days)) {
-      DatasArryDays.push(Days);
-      // console.log(DatasArryDays);  13 12 11 10 9 8  7 6 5 4 3 2 1
-    }
-    return DatasArryDays;
-  };
-  const extractMonths = (time: string): string[] => {
-    const datePart = time.split("T")[0];
-    const [Month] = datePart.split("-").slice(1, 2);
-
-    if (!DatasArryMonth.includes(Month)) {
-      DatasArryMonth.push(Month);
-      console.log(DatasArryMonth);
-    }
-    return DatasArryMonth;
-  };
 
   useEffect(() => {
     createTimeBlocks(data); // اولین بار اجرای تابع برای تنظیم بازه‌ها
@@ -69,46 +46,85 @@ const WeatherDisplay: React.FC = () => {
 
     return () => clearTimeout(checkTimeChange as unknown as number); // پاک‌سازی در زمان unmount
   }, [data]);
-  let tmp: String = "";
 
-  ///  دریافت تاریخ امروز
-  const getcurrentday = () => {
-    const nowDate = new Date();
-    let Days = String(nowDate.getDate());
-    if (Days.length <= 1) {
-      tmp = Days;
-      Days = "0" + tmp;
-    }
-    //     console.log(nowDate);
-    // console.log(Days);
 
-    return `${Days}`;
-  };
-  const currentday = getcurrentday();
+  // آرایه‌های یکتا برای ذخیره روزها و ماه‌ها
+let DatasArryDays: string[] = [];
+let DatasArryMonth: string[] = [];
 
-  // دریافت ماه از سیستم
-  const getCurrentMonth = () => {
-    const nowDate = new Date();
-    let Month = String(nowDate.getMonth() + 1);
-    if (Month.length <= 1) {
-      tmp = Month;
-      Month = "0" + tmp;
-    }
-    console.log(Month);
+// تابعی برای بیرون آوردن روز از time
+const extractDay = (time: string): string[] => {
+  const datePart = time.split("T")[0];
+  const Days = datePart.split("-")[2];
 
-    return `${Month}`;
-  };
-  const currentMonth = getCurrentMonth();
+  if (!DatasArryDays.includes(Days)) {
+    DatasArryDays.push(Days);
+    // console.log(DatasArryDays); // خروجی تست
+  }
+  return DatasArryDays;
+};
 
-  const filteredData = data.filter((item) => {
-    // بررسی اینکه آیا تاریخ های استخراج شده شامل currentDates هستند
-    // const dateMatch =  extractMonths(item.time).some((date) => date === currentMonth);
-    const dateDays = extractDay(item.time).some((date) => date === currentday);
-    console.log("days", currentday);
-    // console.log("Date Match:", dateDays, "Date Days:", currentday);
-    return dateDays;
-  });
-  // console.log(filteredData)
+// تابعی برای بیرون آوردن ماه از time
+const extractMonths = (time: string): string[] => {
+  const datePart = time.split("T")[0];
+  const Month = datePart.split("-")[1];
+
+  if (!DatasArryMonth.includes(Month)) {
+    DatasArryMonth.push(Month);
+    // console.log(DatasArryMonth); // خروجی تست
+  }
+  return DatasArryMonth;
+};
+
+// دریافت روز فعلی
+const getCurrentDay = () => {
+  const nowDate = new Date();
+  let Days = String(nowDate.getDate());
+  if (Days.length <= 1) {
+    Days = "0" + Days;
+  }
+  return Days;
+};
+const currentDay = getCurrentDay();
+
+// دریافت ماه فعلی
+const getCurrentMonth = () => {
+  const nowDate = new Date();
+  let Month = String(nowDate.getMonth() + 1);
+  if (Month.length <= 1) {
+    Month = "0" + Month;
+  }
+  return Month;
+};
+const currentMonth = getCurrentMonth();
+
+
+
+
+// استخراج روزها و ماه‌ها از دیتای ورودی
+data.forEach((item) => {
+  extractDay(item.time);
+  extractMonths(item.time);
+});
+
+const filteredData = data.filter((item) => {
+  // استخراج روز و ماه از هر آیتم
+  const datePart = item.time.split("T")[0];
+  const [year, month, day] = datePart.split("-");
+
+
+  // بررسی اینکه آیا روز و ماه آیتم مطابق با روز و ماه فعلی سیستم هستند
+  const dateMatch = month === currentMonth;
+  const dateDays = day === currentDay;
+
+  return dateDays && dateMatch;
+});
+
+console.log( "j",filteredData); // نمایش داده‌های فیلتر شده
+
+
+
+
 
   const createTimeBlocks = (data: WeatherData[]) => {
     const currentTime = new Date();

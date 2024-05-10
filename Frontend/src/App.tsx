@@ -5,14 +5,14 @@ import MainFooter from "./componet/Footer/FooterMain";
 import Mainregion from "./componet/region/Mainregion";
 import NotFound from "./componet/NotFound/notFound";
 import DataProvider from "./Axsios/DataProviderProps";
-import WeatherDisplay from './test/Test';
+import WeatherDisplay from './componet/main/todays/today';
 // import ErrorBoundary from './Error/Errors'; // مسیر به `ErrorBoundary`
 const App: React.FC = () => {
   return (
     <>
        <DataProvider>
-            <WeatherDisplay />
-        </DataProvider>
+            
+       
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/setting" element={<MainFooter />} />
@@ -20,6 +20,7 @@ const App: React.FC = () => {
         <Route path="*" element={<NotFound />} />
         {/* مسیرهای دیگر */}
       </Routes>
+      </DataProvider>
     </>
   );
 };
