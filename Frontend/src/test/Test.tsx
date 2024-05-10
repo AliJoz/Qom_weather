@@ -101,6 +101,7 @@ console.log(timeBlocks);
             )}`}</h2>
             <p>{`Min Temperature: ${minTemp.toFixed(2)}°C`}</p>
             <p>{`Max Temperature: ${maxTemp.toFixed(2)}°C`}</p>
+            <br /> <hr />
             {/* <ul>
               {block.data.map((item, i) => (
                 <li key={item.id}>

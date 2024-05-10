@@ -1,42 +1,51 @@
 import React from "react";
-import Today from './todays/today';
-// import MultyWeather from './six_times/dataMulty'; 
-// import ViewWeather from './six_times/viewMulty'; 
-
-// Define the TimeBlock type
+import Today from "./todays/today";
+// import dayIcon from "./six_times/day.svg"; // Import the SVG icon
+import WeatherDisplay from "./six_times/dataMulty";
+import ViewWeather from './six_times/viewMulty'
 interface TimeBlock {
   time: string;
   temperature: number;
-  temp: string; // Adjust the type as needed
+  temp: string;
+  icons: string;
 }
 
-// Update MultyWeather to return TimeBlock[]
-const MultyWeather = (): TimeBlock[] => {
-  return [
-    { time: "12:00", temperature: 25, temp: "25°C" },
-    { time: "15:00", temperature: 28, temp: "28°C" },
-    // Add more objects as necessary
-  ];
-};
+// const MultyWeather = (): TimeBlock[] => {
+//   return [
+//     { time: "12:00", temperature: 25, temp: "25°C", icons: dayIcon },
+//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
+//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
+//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
+//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
+//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
+//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
+//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
+//   ];
+// };
 
-// Ensure ViewWeather expects the correct type
 interface ViewWeatherProps {
   data: TimeBlock;
 }
 
-const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
-  return (
-    <div>
-      <p>{data.time}</p>
-      <p>{data.temperature}</p>
-      <p>{data.temp}</p>
-    </div>
-  );
-};
+// const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
+//   return (
+//     <div className="flex">
+//       <div className="flex flex-col items-center">
+//         <span className="text-xs sm:text-sm font-iranBlack">6:00 AM</span>
+//         <img
+//           src="/public/icons/animated/night.svg"
+//           alt="Cloudy"
+//           className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
+//         />
+//         <span className="text-base sm:text-lg font-iran-Dem">25°</span>
+//       </div>
+//       <div className="w-0.5 h-20 bg-slate-600 block ml-3"></div>
+//     </div>
+//   );
+// };
 
-// Your Right component remains largely the same
 const Right: React.FC = () => {
-  const weatherDataArray = MultyWeather();
+  const weatherDataArray = WeatherDisplay();
 
   return (
     <div className="flex flex-col space-y-4">

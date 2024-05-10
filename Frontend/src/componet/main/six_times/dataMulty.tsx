@@ -73,7 +73,7 @@ const useWeatherData = (): TimeBlock[] => {
   };
 
 
-  return timeBlocks; // Return the array of time blocks
+  return [...timeBlocks]; // Return the array of time blocks
 };
 
 export default useWeatherData;

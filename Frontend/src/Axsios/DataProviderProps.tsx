@@ -31,7 +31,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
             setData(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);
-            setError('Failed to fetch data');
+            setError('Failed to fetch data');  // concted in routers
         } finally {
             setLoading(false);
         }
