@@ -1,40 +1,67 @@
-import React from 'react';
-import useWeatherData from './TT'; // فرض بر این است که useWeatherData در فایل TT قرار دارد
+import React, { useContext } from "react";
+import useLast30Days from "../hook/30dayes/showdate";
+import { DataContext } from "../Axsios/DataProviderProps";
+import useWeatherData from "../hook/sevenDay/seven";
+
+interface WeatherData {
+  id: number;
+  temp: number; // دما
+  hum: number; // رطوبت
+  speed: number; // سرعت باد
+  dir: string; // جهت باد
+  dust: number; // گرد و غبار
+  co2: number; // CO2
+  time: string; // زمان
+  device_id: number;
+  create_date: string;
+}
 
 const DateDisplay: React.FC = () => {
-  // تابع برای فرمت تاریخ به صورت YYYY-MM-DD
-  const formatDate = (date: Date) => date.toISOString().split('T')[0];
+  // const dates = useLast30Days(); // دریافت تاریخ‌های 30 روز گذشته
+  const weatherData = useContext(DataContext); // دریافت داده‌های هواشناسی از context
+  const daysData: { date: string; minTemp: number; maxTemp: number }[] = [];
 
-  // دریافت تاریخ فعلی
-  const currentDate = new Date();
-
-  // ایجاد آرایه‌ای برای ذخیره تاریخ‌ها
-  const dates: string[] = [];
-
-  // پر کردن آرایه با تاریخ‌های روزانه از تاریخ فعلی تا 7 روز پیش
-  for (let i = 0; i <= 7; i++) {
+  // برای هر روز در 30 روز گذشته
+  for (let i = 0; i < 30; i++) {
     const date = new Date();
-    date.setDate(currentDate.getDate() - i);
-    dates.push(formatDate(date));
+    date.setDate(date.getDate() - i);
+// console.log(weatherData);
+
+    const formattedDate = date.toISOString().split("T")[0];
+   
+    const { minTemp, maxTemp } = useWeatherData(formattedDate, weatherData);
+
+    // بررسی اگر مقادیر minTemp و maxTemp معتبر باشند
+    if (
+      typeof minTemp === "number" &&
+      typeof maxTemp === "number" &&
+      isFinite(minTemp) &&
+      isFinite(maxTemp)
+    ) {
+      daysData.push({
+        date: date.toLocaleDateString("fa-IR"), // تاریخ به فرمت فارسی
+        maxTemp,
+        minTemp,
+      });
+    }
   }
 
   return (
     <div>
-      <h2>Weather Data for the Last 7 Days</h2>
-      {dates.map((date, index) => {
-        const { minTemp, maxTemp, filteredData } = useWeatherData(date);
-        
-        return (
-          <div key={index}>
-            <h3>Date: {date}</h3>
-            <p><strong>Minimum Temperature:</strong> {minTemp}°C</p>
-            <p><strong>Maximum Temperature:</strong> {maxTemp}°C</p>
-            
-            <h4>Detailed Data:</h4>
-            <hr /><br />
-          </div>
-        );
-      })}
+      <h2>کمترین و بیشترین دمای ۳۰ روز گذشته</h2>
+      {daysData.length > 0 ? (
+        <ul>
+          {daysData.map((day, index) => (
+            <li key={index}>
+              <div>تاریخ: {day.date}</div>
+              <div>بیشترین دما: {day.maxTemp} °C</div>
+              <div>کمترین دما: {day.minTemp} °C</div>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>هیچ داده‌ای برای نمایش وجود ندارد.</p>
+      )}
     </div>
   );
 };

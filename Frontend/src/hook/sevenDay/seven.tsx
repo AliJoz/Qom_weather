@@ -1,5 +1,4 @@
-// import { useContext } from 'react';
-// import { DataContext } from '../../Axsios/DataProviderProps'; // فرض می‌کنم شما از اینجا Context خود را ایمپورت کرده‌اید
+
 interface WeatherData {
   id: number;
   temp: number;
@@ -28,6 +27,7 @@ const useWeatherData = (date: string, data: WeatherData[]): WeatherStats => {
     const itemDate = item.time.split('T')[0];
     return itemDate === inputDate;
   });
+  console.log(filteredData)
 
   // پیدا کردن کمترین و بیشترین دما
   const minTemp = Math.min(...filteredData.map(item => item.temp));
