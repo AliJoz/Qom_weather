@@ -36,9 +36,9 @@ const Today: React.FC = () => {
 
     // فیلتر کردن بر اساس روز و ماه جاری
     const dateMatch = month === currentMonth && day === currentDay;
-
+const Hu=String(nowDate.getHours());
     // فیلتر کردن بر اساس ساعت 4
-    const hourMatch = extractHour(item.time) === "04";
+    const hourMatch = extractHour(item.time) === Hu;
 
     return dateMatch && hourMatch;
   });
@@ -48,7 +48,6 @@ const Today: React.FC = () => {
   // JSX برای رندر کردن داده‌های فیلتر شده
   return (
     <div>
-      <h1>Filtered Data for Today (Hour 4)</h1>
       {filteredData.length > 0 ? (
         <ul>
           {filteredData.map((item, index) => {
@@ -61,7 +60,7 @@ const Today: React.FC = () => {
                   <div className="flex flex-col sm:flex-row justify-between">
                     <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
                       <span className="text-sm">دما واقعی</span>
-                      <span className="text-lg">{item.temp}°</span>
+                      <span className="text-lg">{item.temp.toFixed(2)}°</span>
                     </div>
                     <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
                       <span className="text-sm">سرعت باد</span>
@@ -72,8 +71,8 @@ const Today: React.FC = () => {
                       <span className="text-lg">{item.dir}</span>
                     </div>
                     <div className="flex flex-col items-center font-yekan">
-                      <span className="text-sm">شاخص اشعه ماوراء بنفش</span>
-                      <span className="text-lg">{item.dust}</span>
+                      <span className="text-sm">میزان گرد وغبار   </span>
+                      <span className="text-lg">{item.dust.toFixed(3)}</span>
                     </div>
                   </div>
                 </li>
@@ -83,7 +82,7 @@ const Today: React.FC = () => {
           })}
         </ul>
       ) : (
-        <p>No data available for hour 4 today.</p>
+        <p className="flex justify-center">اطلاعات در دسترس نیست</p>
       )}
     </div>
   );

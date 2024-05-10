@@ -5,7 +5,7 @@ import MainFooter from "./componet/Footer/FooterMain";
 import Mainregion from "./componet/region/Mainregion";
 import NotFound from "./componet/NotFound/notFound";
 import DataProvider from "./Axsios/DataProviderProps";
-import WeatherDisplay from './componet/main/todays/today';
+
 // import ErrorBoundary from './Error/Errors'; // مسیر به `ErrorBoundary`
 const App: React.FC = () => {
   return (
