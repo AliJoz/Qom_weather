@@ -1,5 +1,5 @@
 import React from "react";
-import ShowIcons from "../../../hook/Showicons/Showicons";
+import ShowIcons from "../../../Hook/Showicons/Showicons";
 interface WeatherData {
   id: number;
   temp: number;
@@ -69,9 +69,9 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
 
   return (
     <>
-      <div className="flex">
+      <div className="flex ">
         <div className="flex flex-col items-center">
-          <span className="text-xs sm:text-sm font-iranBlack">
+          <span className="text-xs sm:text-sm font-iranBlack text-zinc-800">
             {formatTime(data.startTime)}
           </span>
           <img
@@ -79,12 +79,12 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
             alt="Weather Icon"
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
           />
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center justify-center space-x-1">
             <span className="sm:text-xs md:text-sm text-base font-iran-Dem text-red-600">
               {maxTemp.toFixed(2)}
             </span>
-            <span>/</span>
-            <span className="sm:text-xs md:text-sm text-base  font-iran-Dem text-cyan-400">
+            <span className="text-zinc-800 text-lg">/</span>
+            <span className="sm:text-xs md:text-sm text-base  font-iran-Dem  text-blue-500">
               {minTemp.toFixed(2)}
             </span>
           </div>

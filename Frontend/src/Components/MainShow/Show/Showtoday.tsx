@@ -57,10 +57,10 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
     <div className="flex flex-col justify-center pl-9 relative">
       <div className="flex justify-between">
         <div className="relative flex">
-          <h2 className="text-6xl font-bold pb-2 absolute -left-10 -top-20">
+          <h2 className="text-6xl font-bold pb-2 absolute -left-10 -top-20 text-zinc-700">
             قم
           </h2>
-          <p className="text-sm w-44 flex justify-center items-center font-iran-Dem absolute -left-[70px] ">
+          <p className="text-sm w-44 flex justify-center items-center font-iran-Dem absolute -left-[70px] text-zinc-950 ">
             میزان رطوبت: {item ? `%${item.hum.toFixed(2)}` : "0%"}
           </p>
         </div>
@@ -75,7 +75,7 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
 
       <div className="absolute top-16 left-0">
         <div className="flex items-center">
-          <span className="text-5xl font-bold">
+          <span className="text-5xl font-bold text-zinc-700">
             {item ? `${item.temp.toFixed(2)}°` : "0°"}
           </span>
         </div>

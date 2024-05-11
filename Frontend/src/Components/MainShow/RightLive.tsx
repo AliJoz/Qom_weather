@@ -63,15 +63,15 @@ const Right: React.FC<RightProps> = ({ weatherData }) => {
   const daysData = getLast7DaysWithWeather();
 
   if (daysData.length === 0) {
-    return <div className="bg-gray-700 p-4 rounded-lg w-full sm:w-[100px] md:w-[200px] lg:w-[300px]"></div>;
+    return <div className=" dark:bg-gray-700 p-4 rounded-lg w-full sm:w-[100px] md:w-[200px] lg:w-[300px]"></div>;
   }
 
   return (
-    <div className="bg-gray-700 p-4 rounded-lg w-full sm:w-[100px] md:w-[200px] lg:w-[300px]">
-      <h3 className="text-lg sm:text-xl mb-4 font-bold text-end">هفته اخیر</h3>
+    <div className="bg-neutral-200 border-slate-500 border-2   p-4 rounded-lg w-full sm:w-[100px] md:w-[200px] lg:w-[300px]">
+      <h3 className="text-lg sm:text-xl mb-4 font-bold text-end text-zinc-700">هفته اخیر</h3>
       <div className="space-y-2">
         {daysData.map((day, index) => (
-          <div key={index} className="flex justify-between">
+          <div key={index} className="flex justify-between text-zinc-800">
             <span className="flex items-center font-iranBlack">
               <img
                 src={day.icon}
@@ -79,7 +79,7 @@ const Right: React.FC<RightProps> = ({ weatherData }) => {
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ml-2"
               />
               <div className="flex">
-                <span className="text-red-500">{day.maxTemp.toFixed(2)}°</span>
+                <span className="text-red-600">{day.maxTemp.toFixed(2)}°</span>
                 <span className="mx-1">/</span>
                 <span className="text-blue-500">{day.minTemp.toFixed(2)}°</span>
               </div>

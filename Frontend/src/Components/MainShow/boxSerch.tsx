@@ -94,33 +94,35 @@ const Main: React.FC = () => {
 
   return (
     <div
-      className="flex flex-row-reverse h-screen bg-gray-800 text-white  relative"
+      className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative"
       dir="ltr"
     >
-     <div className="w-72 absolute top-[82px] right-5 text-xl tracking-wide mr-7 font-bold font-yekan">
+      <div className="w-72 absolute top-20 right-5 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700">
         {" "}
         <LiveClock />{" "}
-      </div>  
-    
+      </div>
+
       <div className="flex flex-col flex-1 space-y-2 relative">
         <div className="flex justify-end p-6 pr-30">
           <div className="relative">
             <input
               type="text"
               placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه"
-              className="flex p-2 w-96 bg-gray-700 text-right pr-2 rounded-lg font-yekan"
+              className="flex p-2 w-96  border-slate-300 dark:bg-gray-700 text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm pl-12 3xl:w-80 h-full"
               value={inputValue}
               onClick={handleInputClick}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
             />
             {showDropdown && filteredOptions.length > 0 && (
-              <ul className="absolute z-10 w-96 bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
+              <ul className="absolute z-10 w-96 text-zink-900 text-zinc-600 bg-yellow-100 dark:bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
                 {filteredOptions.map((option, index) => (
                   <li
                     key={index}
                     className={`p-2 cursor-pointer ${
-                      highlightedIndex === index ? "bg-gray-600" : ""
+                      highlightedIndex === index
+                        ? " bg-yellow-300 text-zinc-800 dark:bg-gray-600"
+                        : ""
                     }`}
                     onClick={() => handleOptionClick(option)}
                     onMouseEnter={() => setHighlightedIndex(index)}
@@ -132,13 +134,13 @@ const Main: React.FC = () => {
             )}
           </div>
         </div>
-        <div className=" absolute  left-[720px] top-8">
-        {/* {"icons "} */}
-        <svg className="w-9 h-9 text-black">
-          <use href="#Sun"></use>
-        </svg>{" "}
-      </div>  
-        
+        <div className=" absolute  left-[720px] top-5">
+          {/* {"icons "} */}
+          <svg className="w-9 h-9 text-zinc-700 dark:text-neutral-50">
+            <use href="#Sun"></use>
+          </svg>{" "}
+        </div>
+
         <MainApp weatherData={filteredData} />
       </div>
     </div>

@@ -24,29 +24,29 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
   const item = filteredData[0];
 
   return (
-    <div>
+    <div className=" " >
       {item ? (
-        <ul>
+        <ul className="">
           <li key={item.id}>
-            <h3 className="flex justify-end text-lg sm:text-xl mb-4 font-bold pr-3">
+            <h3 className="flex justify-end text-lg sm:text-xl mb-4 font-bold pr-3 tracking-tight text-zinc-800">
               شاخص های هوا
             </h3>
             <div className="flex flex-col sm:flex-row justify-between px-10">
               <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
-                <span className="text-sm">دما واقعی</span>
-                <span className="text-lg">{item.temp.toFixed(2)}°</span>
+                <span className="text-zinc-800 text-base font-iran-Dem">دما واقعی</span>
+                <span className="text-lg text-zinc-700  font-yekan">{item.temp.toFixed(2)}°</span>
               </div>
               <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
-                <span className="text-sm">سرعت باد</span>
-                <span className="text-lg">{(item.speed / 3.6).toFixed(2)} m/s</span>
+                <span className="text-zinc-800 text-base font-iran-Dem">سرعت باد</span>
+                <span className="text-lg text-zinc-700  font-yekan">{(item.speed / 3.6).toFixed(2)} m/s</span>
               </div>
               <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
-                <span className="text-sm">جهت باد</span>
-                <span className="text-lg">{showDir(item.dir)}</span>
+                <span className="text-zinc-800 text-base font-iran-Dem">جهت باد</span>
+                <span className="text-lg text-zinc-700  font-yekan">{showDir(item.dir)}</span>
               </div>
               <div className="flex flex-col items-center font-yekan">
-                <span className="text-sm">میزان گرد و غبار</span>
-                <span className="text-lg">{item.dust.toFixed(3)}</span>
+                <span className="text-zinc-800 text-base font-iran-Dem">میزان گرد و غبار</span>
+                <span className="text-zinc-700 text-lg font-yekan">{item.dust.toFixed(3)}</span>
               </div>
             </div>
           </li>

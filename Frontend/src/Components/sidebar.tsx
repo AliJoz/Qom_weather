@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Sidebar: React.FC = () => {
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
-      <div className="flex flex-col items-center bg-slate-600 text-white w-20 h-full py-6">
+      <div className="flex flex-col items-center bg-neutral-100/90 border-slate-500  text-zinc-900 dark:bg-slate-600 dark:text-white w-20 h-full py-6">
         {/* Logo */}
         <div className="mb-6">
-          <Link to="/" className=" w-16 h-16 flex items-center justify-center rounded-full">
+          <Link
+            to="/"
+            className=" w-16 h-16 flex items-center justify-center rounded-full"
+          >
             <img src="/icons/Qweather/Qw.png" alt="Q icons" className="bg-p" />
           </Link>
         </div>
@@ -38,7 +41,9 @@ const Sidebar: React.FC = () => {
             <svg className="w-6 h-6">
               <use href="#setting"></use>
             </svg>
-            <span className="text-xs mt-2 text-center">پرسش و ارتباط با ما</span>
+            <span className="text-xs mt-2 text-center">
+              پرسش و ارتباط با ما
+            </span>
           </Link>
         </div>
       </div>
