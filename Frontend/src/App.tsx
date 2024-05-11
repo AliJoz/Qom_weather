@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <Loders />
       ) : (
         <>
-          <div className="scrollbar  scrollbar-thumb-neutral-50 scrollbar-track-zinc-900 flex h-screen   overflow-auto" dir="rtl">
+          <div className="scrollbar  scrollbar-thumb-neutral-50 scrollbar-track-zinc-900 flex h-screen  overflow-auto" dir="rtl">
             {/* محتوای اصلی */}
             <div className="flex-grow mr-20">
               {" "}

@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 import MainApp from "./StructureMain";
 import { DataContext } from "../../Hook/Axsios/DataProviderProps";
-import LiveClock from  "./LiveClock/LiveClock.jsx";
+import LiveClock from "./LiveClock/LiveClock";
 const Main: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
@@ -94,11 +94,15 @@ const Main: React.FC = () => {
 
   return (
     <div
-      className="flex flex-row-reverse h-screen bg-gray-800 text-white "
+      className="flex flex-row-reverse h-screen bg-gray-800 text-white  relative"
       dir="ltr"
     >
-      <div> <LiveClock /> </div>
-      <div className="flex flex-col flex-1">
+     <div className="w-72 absolute top-[82px] right-5 text-xl tracking-wide mr-7 font-bold font-yekan">
+        {" "}
+        <LiveClock />{" "}
+      </div>  
+    
+      <div className="flex flex-col flex-1 space-y-2 relative">
         <div className="flex justify-end p-6 pr-30">
           <div className="relative">
             <input
@@ -128,6 +132,13 @@ const Main: React.FC = () => {
             )}
           </div>
         </div>
+        <div className=" absolute  left-[720px] top-8">
+        {/* {"icons "} */}
+        <svg className="w-9 h-9 text-black">
+          <use href="#Sun"></use>
+        </svg>{" "}
+      </div>  
+        
         <MainApp weatherData={filteredData} />
       </div>
     </div>
