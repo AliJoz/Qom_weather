@@ -97,14 +97,14 @@ const Main: React.FC = () => {
       className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative"
       dir="ltr"
     >
-      <div className="w-72 absolute top-20 right-5 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700">
+      <div className="w-72 absolute top-8 right-5 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700">
         {" "}
         <LiveClock />{" "}
       </div>
 
       <div className="flex flex-col flex-1 space-y-2 relative">
         <div className="flex justify-end p-6 pr-30">
-          <div className="relative">
+          <div className="absolute top-2 left-[510px]">
             <input
               type="text"
               placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه"
@@ -134,7 +134,7 @@ const Main: React.FC = () => {
             )}
           </div>
         </div>
-        <div className=" absolute  left-[720px] top-5">
+        <div className=" absolute  left-[460px] top-2">
           {/* {"icons "} */}
           <svg className="w-9 h-9 text-zinc-700 dark:text-neutral-50">
             <use href="#Sun"></use>

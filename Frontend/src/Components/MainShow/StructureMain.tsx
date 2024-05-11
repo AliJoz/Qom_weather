@@ -29,7 +29,7 @@ const Main: React.FC<MainProps> = ({ weatherData }) => {
         
         <Show weatherData={weatherData} />
       </div>
-      <div className="flex-1 lg:flex justify-between  p-8 bg-neutral-200 dark:bg-gray-800 text-white grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="flex-1 lg:flex justify-between  p-8 bg-neutral-200 dark:bg-gray-800 text-white grid grid-cols-1 xl:grid-cols-2 gap-5">
        
         <div className="mr-20 space-y-8 mt-30">
           {/* Pass weatherData to the LeftLive component */}

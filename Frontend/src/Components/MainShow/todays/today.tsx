@@ -1,5 +1,5 @@
 import React from "react";
-import useFilteredWeatherData from "../../../hook/main/today";
+import useFilteredWeatherData from "../../../Hook/main/today";
 
 interface WeatherData {
   id: number;

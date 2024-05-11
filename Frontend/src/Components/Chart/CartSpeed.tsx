@@ -9,8 +9,8 @@ import {
   Legend,
   ResponsiveContainer,
 } from "recharts";
-import { DataContext } from "../Hook/Axsios/DataProviderProps";
-import useWeatherData from "../Hook/sevenDay/seven";
+import { DataContext } from "../../Hook/Axsios/DataProviderProps";
+import useWeatherData from "../../Hook/sevenDay/seven";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 interface WeatherData {
@@ -65,7 +65,7 @@ const TemperatureChart: React.FC = () => {
     <ResponsiveContainer width="100%" height={400}>
       <LineChart
         data={reversedDaysData}
-        margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+        margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
       >
         <CartesianGrid strokeDasharray="2 3" />
         <XAxis dataKey="date" />

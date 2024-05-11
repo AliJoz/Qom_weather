@@ -67,7 +67,7 @@ const Right: React.FC<RightProps> = ({ weatherData }) => {
   }
 
   return (
-    <div className="bg-neutral-200 border-slate-500 border-2   p-4 rounded-lg w-full sm:w-[100px] md:w-[200px] lg:w-[300px]">
+    <div className="bg-neutral-200 border-slate-500 border-2   p-4 rounded-lg  w-[380px]">
       <h3 className="text-lg sm:text-xl mb-4 font-bold text-end text-zinc-700">هفته اخیر</h3>
       <div className="space-y-2">
         {daysData.map((day, index) => (

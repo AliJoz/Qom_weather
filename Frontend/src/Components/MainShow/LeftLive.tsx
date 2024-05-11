@@ -1,11 +1,11 @@
 import React from "react";
 import Today from "./todays/today";
 import WeatherDisplay from "./six_times/dataMulty";
-import ViewWeather from './six_times/viewMulty';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
+import ViewWeather from "./six_times/viewMulty";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
 
 interface WeatherData {
   id: number;
@@ -46,10 +46,29 @@ const LeftLive: React.FC<LeftLiveProps> = ({ weatherData }) => {
           امروز
         </h3>
         <Swiper
-          className="swiper "
+          className="swiper"
           modules={[Navigation]}
           slidesPerView={5}
-          direction={window.innerWidth <= 760 ? "vertical" : "horizontal"}
+          breakpoints={{
+            300: {
+              slidesPerView: 1,
+            },
+            430: {
+              slidesPerView: 2,
+            },
+            640: {
+              slidesPerView: 3,
+            },
+            768: {
+              slidesPerView: 4,
+            },
+            1024: {
+              slidesPerView: 5,
+            },
+            1100: {
+              slidesPerView: 5,
+            },
+          }}
           navigation={{
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",

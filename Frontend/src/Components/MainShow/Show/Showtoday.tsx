@@ -1,5 +1,5 @@
 import React from "react";
-import useFilteredWeatherData from "../../../hook/main/today"; // Adjust the path if needed
+import useFilteredWeatherData from "../../../Hook/main/today"; // Adjust the path if needed
 import ShowIcons from "../../../Hook/Showicons/Showicons";
 
 interface WeatherData {
@@ -57,10 +57,10 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
     <div className="flex flex-col justify-center pl-9 relative">
       <div className="flex justify-between">
         <div className="relative flex">
-          <h2 className="text-6xl font-bold pb-2 absolute -left-10 -top-20 text-zinc-700">
+          <h2 className="text-6xl font-bold  absolute -left-3 -bottom-[0.8rem]  text-zinc-700">
             قم
           </h2>
-          <p className="text-sm w-44 flex justify-center items-center font-iran-Dem absolute -left-[70px] text-zinc-950 ">
+          <p className="text-sm w-44 flex justify-center items-center font-iran-Dem absolute -bottom-8 -left-2 text-zinc-950 ">
             میزان رطوبت: {item ? `%${item.hum.toFixed(2)}` : "0%"}
           </p>
         </div>
