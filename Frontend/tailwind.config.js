@@ -5,7 +5,7 @@ export default {
   theme: {
     extend: {
       screens: {
-        lg: "1024px",
+        lg: "920px",
       },
       colors: {
         brown: {
@@ -61,6 +61,22 @@ export default {
     function ({ addVariant }) {
       addVariant("child", "&>*");
       addVariant("child-hover", "&>*:hover");
+    },
+     function ({ addUtilities }) {
+      addUtilities({
+        '.placeholder-sm::placeholder': {
+          'font-size': '10px', // اندازه کوچک‌تر برای placeholder
+        },
+        '.placeholder-md::placeholder': {
+          'font-size': '16px', // اندازه متوسط برای placeholder
+        },
+        '.placeholder-lg::placeholder': {
+          'font-size': '18px', // اندازه بزرگ‌تر برای placeholder
+        },
+        '.placeholder-xl::placeholder': {
+          'font-size': '20px', // اندازه بزرگ‌تر برای placeholder
+        },
+      });
     },
   ],
 };

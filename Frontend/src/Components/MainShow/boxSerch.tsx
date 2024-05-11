@@ -58,9 +58,14 @@ const Main: React.FC = () => {
     if (!showDropdown) return;
 
     if (event.key === "ArrowDown") {
-      setHighlightedIndex((prevIndex) => (prevIndex + 1) % filteredOptions.length);
+      setHighlightedIndex(
+        (prevIndex) => (prevIndex + 1) % filteredOptions.length
+      );
     } else if (event.key === "ArrowUp") {
-      setHighlightedIndex((prevIndex) => (prevIndex + filteredOptions.length - 1) % filteredOptions.length);
+      setHighlightedIndex(
+        (prevIndex) =>
+          (prevIndex + filteredOptions.length - 1) % filteredOptions.length
+      );
     } else if (event.key === "Enter") {
       if (highlightedIndex >= 0 && highlightedIndex < filteredOptions.length) {
         handleOptionClick(filteredOptions[highlightedIndex]);
@@ -70,7 +75,9 @@ const Main: React.FC = () => {
     }
   };
 
-  const filteredOptions = options.filter((option) => option.toLowerCase().includes(inputValue.toLowerCase()));
+  const filteredOptions = options.filter((option) =>
+    option.toLowerCase().includes(inputValue.toLowerCase())
+  );
 
   type RegionDataType = {
     [key: string]: {
@@ -95,7 +102,9 @@ const Main: React.FC = () => {
     filteredData = data.filter((item) => item.device_id === deviceId);
     info = regionData[region].info;
   } else if (!region) {
-    const deviceIds = Object.values(regionData).map((region) => region.deviceId);
+    const deviceIds = Object.values(regionData).map(
+      (region) => region.deviceId
+    );
     filteredData = data.filter((item) => deviceIds.includes(item.device_id));
     info = "اطلاعات مربوط به هر دو منطقه";
   } else {
@@ -107,30 +116,35 @@ const Main: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative" dir="ltr">
-      <div className="hidden lg:block w-72 absolute top-8 right-5 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700 dark:text-white">
+    <div
+      className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative"
+      dir="ltr"
+    >
+      <div className="hidden lg:block w-72 absolute top-6   right-0 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700 dark:text-white">
         <LiveClock />
       </div>
 
       <div className="flex flex-col flex-1 space-y-2 relative">
         <div className="flex justify-end p-6 pr-30">
-          <div className="absolute top-2 left-12  md:left-50 lg:left-[510px]">
+          <div className="absolute top-2 left-12 md:top-4 md:h-10  md:left-50 lg:left-96">
             <input
               type="text"
-              placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه"
-              className="flex p-2 w-60 md:w-96 border-slate-300 dark:bg-gray-700 text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm pl-12 3xl:w-80 h-full"
+              placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه "
+              className="flex mr-2 pl-6  md:p-2 w-56 md:w-96 lg:w-[460px] border-slate-300 dark:bg-gray-700 md:text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm sm:pl-12 3xl:w-80 h-full placeholder-sm md:placeholder-md placeholder:text-neutral-100 lg:placeholder-lg"
               value={inputValue}
               onClick={handleInputClick}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
             />
             {showDropdown && filteredOptions.length > 0 && (
-              <ul className="absolute z-10 w-60 md:w-96 text-zinc-900 bg-yellow-100 dark:bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
+              <ul className="absolute z-10 w-56 md:w-96 text-zinc-900 bg-yellow-100 dark:bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
                 {filteredOptions.map((option, index) => (
                   <li
                     key={index}
                     className={`p-2 cursor-pointer ${
-                      highlightedIndex === index ? "bg-yellow-300 text-zinc-800 dark:bg-gray-600" : ""
+                      highlightedIndex === index
+                        ? "bg-yellow-300 text-zinc-800 dark:bg-gray-600"
+                        : ""
                     }`}
                     onClick={() => handleOptionClick(option)}
                     onMouseEnter={() => setHighlightedIndex(index)}
@@ -142,9 +156,12 @@ const Main: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="absolute left-1 md:left-[460px] top-1 md:top-2" onClick={toggleDarkMode}>
+        <div
+          className="absolute left-1 md:left-[50px] lg:left-80 top-1 md:top-2"
+          onClick={toggleDarkMode}
+        >
           {/* Dynamically render the correct icon based on isDarkMode */}
-          <svg className="w-9 h-9 text-salte-300 dark:text-neutral-200">
+          <svg className="ml-3 w-6 h-6 sm:w-8 sm:h-8 md:w-12 md:h-12   text-salte-300 dark:text-neutral-200">
             <use href={isDarkMode ? "#Sun" : "#Moon"}></use>
           </svg>
         </div>
