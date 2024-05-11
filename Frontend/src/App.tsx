@@ -23,7 +23,7 @@ const App: React.FC = () => {
         <Loders /> 
       ) : (
         <>
-      <Test />
+      {/* <Test /> */}
         <div className="flex h-screen ">
         
         <div className="fixed top-0 right-0 h-full  bg-gray-800 text-white flex flex-col">
