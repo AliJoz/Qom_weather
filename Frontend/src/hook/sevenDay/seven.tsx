@@ -18,9 +18,9 @@ interface WeatherStats {
   filteredData: WeatherData[];
 }
 
-const useWeatherData = (date: string, data: WeatherData[]): WeatherStats => {
+const useWeatherData = (dates: string, data: WeatherData[]): WeatherStats => {
   // تاریخ ورودی را به فرمت YYYY-MM-DD تبدیل می‌کنیم
-  const inputDate = date.split(' ')[0];
+  const inputDate = dates.split(' ')[0];
 
   // فیلتر کردن داده‌ها بر اساس تطبیق تاریخ
   const filteredData = data.filter(item => {

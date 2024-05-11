@@ -1,5 +1,5 @@
 import React, {useState ,useContext, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams,Navigate  ,useNavigate } from "react-router-dom";
 import { DataContext } from "../../Hook/Axsios/DataProviderProps";
 import Main from "../MainShow/StructureMain";
 import LiveClock from "../MainShow/LiveClock/LiveClock";
