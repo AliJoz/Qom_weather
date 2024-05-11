@@ -71,20 +71,20 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
     <>
       <div className="flex ">
         <div className="flex flex-col items-center">
-          <span className="text-xs sm:text-sm font-iranBlack text-zinc-800">
+          <span className="text-base sm:text-base md:text-lg font-iranBlack text-zinc-800 dark:text-zinc-50 font-black">
             {formatTime(data.startTime)}
           </span>
           <img
             src={icon}
             alt="Weather Icon"
-            className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
+            className="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18"
           />
           <div className="flex items-center justify-center space-x-1">
-            <span className="sm:text-xs md:text-sm text-base font-iran-Dem text-red-600">
+            <span className="text-base font-bold text-red-600   ">
               {maxTemp.toFixed(2)}
             </span>
-            <span className="text-zinc-800 text-lg">/</span>
-            <span className="sm:text-xs md:text-sm text-base  font-iran-Dem  text-blue-500">
+            <span className="text-zinc-800 dark:text-zinc-50 text-lg">/</span>
+            <span className=" text-base font-bold  text-blue-500 dark:text-blue-400">
               {minTemp.toFixed(2)}
             </span>
           </div>

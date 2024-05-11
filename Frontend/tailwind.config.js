@@ -49,6 +49,7 @@ export default {
       },
     },
     screens: {
+      x: "361px",
       xs: "475px",
       sm: "576px",
       md: "760px",
@@ -62,19 +63,19 @@ export default {
       addVariant("child", "&>*");
       addVariant("child-hover", "&>*:hover");
     },
-     function ({ addUtilities }) {
+    function ({ addUtilities }) {
       addUtilities({
-        '.placeholder-sm::placeholder': {
-          'font-size': '10px', // اندازه کوچک‌تر برای placeholder
+        ".placeholder-sm::placeholder": {
+          "font-size": "10px", // اندازه کوچک‌تر برای placeholder
         },
-        '.placeholder-md::placeholder': {
-          'font-size': '16px', // اندازه متوسط برای placeholder
+        ".placeholder-md::placeholder": {
+          "font-size": "16px", // اندازه متوسط برای placeholder
         },
-        '.placeholder-lg::placeholder': {
-          'font-size': '18px', // اندازه بزرگ‌تر برای placeholder
+        ".placeholder-lg::placeholder": {
+          "font-size": "18px", // اندازه بزرگ‌تر برای placeholder
         },
-        '.placeholder-xl::placeholder': {
-          'font-size': '20px', // اندازه بزرگ‌تر برای placeholder
+        ".placeholder-xl::placeholder": {
+          "font-size": "20px", // اندازه بزرگ‌تر برای placeholder
         },
       });
     },
