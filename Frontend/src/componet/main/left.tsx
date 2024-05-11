@@ -28,7 +28,7 @@ const Left: React.FC = () => {
         dayName = 'دیروز';
       }
 
-      
+     
       daysData.push({
         day: dayName,
         date: date.toLocaleDateString('fa-IR'),

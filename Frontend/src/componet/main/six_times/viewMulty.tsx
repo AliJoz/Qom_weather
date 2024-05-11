@@ -40,7 +40,7 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
   const temperatures = data.data.map((item) => item.temp).filter(temp => temp !== undefined && temp !== null);
 
   if (temperatures.length === 0) {
-    return <div>اطلاعات در دسترس نیست</div>;
+    return <div className="hidden">اطلاعات در دسترس نیست</div>;
   }
 
   const minTemp = Math.min(...temperatures);

@@ -25,12 +25,19 @@ const data = [
   { name: '18', maxTemp: 41, minTemp: 19, realMaxTemp: 38, realMinTemp: 16 },
   { name: '19', maxTemp: 40, minTemp: 18, realMaxTemp: 37, realMinTemp: 15 },
   { name: '20', maxTemp: 39, minTemp: 17, realMaxTemp: 36, realMinTemp: 14 },
+  { name: '21', maxTemp: 39, minTemp: 17, realMaxTemp: 36, realMinTemp: 14 },
+  { name: '22', maxTemp: 39, minTemp: 17, realMaxTemp: 36, realMinTemp: 14 },
+  { name: '23', maxTemp: 39, minTemp: 17, realMaxTemp: 36, realMinTemp: 14 },
+  { name: '24', maxTemp: 39, minTemp: 17, realMaxTemp: 36, realMinTemp: 14 },
+  { name: '25', maxTemp: 39, minTemp: 17, realMaxTemp: 36, realMinTemp: 14 },
+  { name: '26', maxTemp: 39, minTemp: 17, realMaxTemp: 36, realMinTemp: 14 },
+
 ];
 
 // کامپوننت اصلی نمودار دما
 const TemperatureChart: React.FC = () => {
   return (
-    <div className='bg-zinc-800'>
+    <div className='bg-zinc-800 h-screen w-[95%]'>
     <ResponsiveContainer width="100%" height={400}>
       <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" />

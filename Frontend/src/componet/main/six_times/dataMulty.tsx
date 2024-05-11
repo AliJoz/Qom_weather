@@ -26,7 +26,7 @@ const useWeatherData = (): TimeBlock[] => {
   const previousTimeRef = useRef(new Date());
 
   useEffect(() => {
-    createTimeBlocks(data); // Execute the function to set up time blocks initially
+    createTimeBlocks(data); 
 
     const checkTimeChange = () => {
       const currentTime = new Date();
@@ -38,10 +38,10 @@ const useWeatherData = (): TimeBlock[] => {
         previousTimeRef.current = currentTime;
       }
 
-      setTimeout(checkTimeChange, 1000); // Check every 1 second
+      setTimeout(checkTimeChange, 1000); 
     };
 
-    checkTimeChange(); // Start the first check
+    checkTimeChange(); 
 
     return () => clearTimeout(checkTimeChange as unknown as number); // Cleanup on unmount
   }, [data]);
@@ -73,7 +73,7 @@ const useWeatherData = (): TimeBlock[] => {
   };
 
 
-  return [...timeBlocks]; // Return the array of time blocks
+  return [...timeBlocks]; 
 };
 
 export default useWeatherData;

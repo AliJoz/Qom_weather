@@ -1,42 +1,42 @@
-import React, { useContext } from 'react';
-import { DataContext } from '../Axsios/DataProviderProps'; // فرض بر اینکه DataProvider در همین مسیر است
+import React from 'react';
+import useWeatherData from './TT'; // فرض بر این است که useWeatherData در فایل TT قرار دارد
 
-const FilteredData: React.FC<{ date: string }> = ({ date }) => {
-    const data = useContext(DataContext); // دریافت داده‌ها از DataContext
+const DateDisplay: React.FC = () => {
+  // تابع برای فرمت تاریخ به صورت YYYY-MM-DD
+  const formatDate = (date: Date) => date.toISOString().split('T')[0];
 
-    // فیلتر کردن داده‌ها براساس تاریخ مشخص
-    const filteredData = data.filter(item => item.create_date === date);
+  // دریافت تاریخ فعلی
+  const currentDate = new Date();
 
-    // محاسبه بیشترین و کمترین مقادیر
-    const minTemp = Math.min(...filteredData.map(item => item.temp));
-    const maxTemp = Math.max(...filteredData.map(item => item.temp));
+  // ایجاد آرایه‌ای برای ذخیره تاریخ‌ها
+  const dates: string[] = [];
 
-    const minHum = Math.min(...filteredData.map(item => item.hum));
-    const maxHum = Math.max(...filteredData.map(item => item.hum));
+  // پر کردن آرایه با تاریخ‌های روزانه از تاریخ فعلی تا 7 روز پیش
+  for (let i = 0; i <= 7; i++) {
+    const date = new Date();
+    date.setDate(currentDate.getDate() - i);
+    dates.push(formatDate(date));
+  }
 
-    const minSpeed = Math.min(...filteredData.map(item => item.speed));
-    const maxSpeed = Math.max(...filteredData.map(item => item.speed));
-
-    return (
-        <div>
-            <h2>Data for {date}</h2>
-            <p>Minimum Temperature: {minTemp}</p>
-            <p>Maximum Temperature: {maxTemp}</p>
-            <p>Minimum Humidity: {minHum}</p>
-            <p>Maximum Humidity: {maxHum}</p>
-            <p>Minimum Speed: {minSpeed}</p>
-            <p>Maximum Speed: {maxSpeed}</p>
-
-            <h3>All Filtered Data</h3>
-            <ul>
-                {filteredData.map(item => (
-                    <li key={item.id}>
-                        ID: {item.id}, Temp: {item.temp}, Hum: {item.hum}, Speed: {item.speed}, Date: {item.create_date}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+  return (
+    <div>
+      <h2>Weather Data for the Last 7 Days</h2>
+      {dates.map((date, index) => {
+        const { minTemp, maxTemp, filteredData } = useWeatherData(date);
+        
+        return (
+          <div key={index}>
+            <h3>Date: {date}</h3>
+            <p><strong>Minimum Temperature:</strong> {minTemp}°C</p>
+            <p><strong>Maximum Temperature:</strong> {maxTemp}°C</p>
+            
+            <h4>Detailed Data:</h4>
+            <hr /><br />
+          </div>
+        );
+      })}
+    </div>
+  );
 };
 
-export default FilteredData;
+export default DateDisplay;

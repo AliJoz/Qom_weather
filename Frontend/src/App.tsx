@@ -9,7 +9,7 @@ import Loders from "./componet/Loder/Loder";
 import Map from "./componet/chart/chart";
 import Sidebar from "./componet/sidebar";
 import Icons from "./componet/icons";
-
+import Test from "./test/Test"
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
@@ -22,6 +22,8 @@ const App: React.FC = () => {
       {loading ? (
         <Loders /> 
       ) : (
+        <>
+      <Test />
         <div className="flex h-screen ">
         
         <div className="fixed top-0 right-0 h-full  bg-gray-800 text-white flex flex-col">
@@ -37,8 +39,10 @@ const App: React.FC = () => {
               <Route path="/region/:region" element={<Mainregion />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
+            
           </div>
         </div>
+        </>
       )}
     </DataProvider>
   );
