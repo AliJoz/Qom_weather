@@ -77,7 +77,7 @@ const Right: React.FC<RightProps> = ({ weatherData }) => {
   }
 
   return (
-    <div className="bg-neutral-200 dark:bg-gray-600 border-slate-500 border-2   p-4 rounded-lg">
+    <div className="bg-neutral-200 dark:bg-gray-600 border-slate-500 border-2 w-[calc(100%+4rem)]    p-4 rounded-lg">
       <h3 className="text-lg sm:text-xl mb-4  text-end dark:text-neutral-200 font-bold text-zinc-700">
         هفته اخیر
       </h3>

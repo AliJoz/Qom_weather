@@ -120,7 +120,7 @@ const Main: React.FC = () => {
       className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800     "
       dir="ltr"
     >
-      <div className="hidden lg:block w-72 absolute top-6   right-0 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700 dark:text-white">
+      <div className="hidden lg:block w-72 absolute top-6   right-3 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700 dark:text-white">
         <LiveClock />
       </div>
 

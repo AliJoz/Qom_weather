@@ -41,8 +41,8 @@ const LeftLive: React.FC<LeftLiveProps> = ({ weatherData }) => {
 
   return (
     <div className="flex flex-col justify-between space-y-9">
-      <div className="bg-neutral-200 border-slate-500 border-2  dark:bg-gray-700 p-4 rounded-lg w-full sm:w-[400px] md:w-[550px] lg:w-[700px] mr-4">
-        <h3 className="flex justify-end text-lg sm:text-xl  mb-4 font-bold tracking-wide text-zinc-700  dark:text-neutral-200">
+      <div className="bg-neutral-200 border-slate-500 border-2  dark:bg-gray-700 p-4 rounded-lg w-[calc(100%+4rem)]  md:w-[550px] lg:w-[700px] mr-4">
+        <h3 className="flex justify-end text-lg sm:text-xl  mb-4 font-bold tracking-wide text-zinc-700 mr-2  dark:text-neutral-200">
           امروز
         </h3>
         <Swiper
@@ -54,7 +54,7 @@ const LeftLive: React.FC<LeftLiveProps> = ({ weatherData }) => {
               slidesPerView: 2,
             },
             435: {
-              slidesPerView: 2,
+              slidesPerView: 3,
             },
             640: {
               slidesPerView: 3,
@@ -81,7 +81,7 @@ const LeftLive: React.FC<LeftLiveProps> = ({ weatherData }) => {
           ))}
         </Swiper>
       </div>
-      <div className="bg-neutral-200 dark:bg-gray-600 border-slate-500 border-2 p-4 lg:p-1 rounded-lg w-full sm:w-[500px] md:w-[600px] lg:w-[700px]  ">
+      <div className="bg-neutral-200 dark:bg-gray-600 border-slate-500 border-2 p-4 lg:p-1 rounded-lg w-[calc(100%+4rem)] md:w-[600px] lg:w-[700px]  ">
         <Today weatherData={weatherData} />
       </div>
     </div>

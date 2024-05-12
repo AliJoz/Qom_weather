@@ -57,7 +57,7 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
     <div className="flex flex-col justify-center pl-9 ">
       <div className="flex justify-between">
         <div className="relative flex">
-          <h2 className="text-lg sm:text-lg md:text-3xl lg:text-5xl xl:text-6xl font-bold  absolute -top-4 -left-12 md:top-3    md:-left-3 -bottom-[0.8rem] dark:text-white text-zinc-700">
+          <h2 className="text-lg sm:text-lg md:text-3xl lg:text-5xl xl:text-6xl font-bold  absolute -top-2 -left-12 md:top-2    md:-left-3 -bottom-[0.8rem] dark:text-white text-zinc-700">
             قم
           </h2>
           <p className=" text-xs md:text-base lg:text-lg w-44 flex justify-center items-center font-iran-Dem absolute -bottom-5 pb-2 left-6 md:top-12 md:left-36  dark:text-zinc-300 text-zinc-950 ">

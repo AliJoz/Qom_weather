@@ -24,7 +24,7 @@ const App: React.FC = () => {
       {loading ? (
         <Loders />
       ) : (
-        <>
+        <div className="bg-neutral-200  dark:bg-gray-800">
           <div
             className="scrollbar  scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-thumb-zinc-100 dark:scrollbar-track-zinc-800  flex h-screen w-full  overflow-auto"
             dir="rtl"
@@ -53,12 +53,12 @@ const App: React.FC = () => {
             </div>
 
             {/* سایدبار و آیکون‌ها */}
-            <div className="fixed top-0 right-0 h-full md:w-20 bg-neutral-200  dark:bg-gray-800 text-white z-10">
+            <div className="fixed top-0 right-0 md:h-full  md:w-20 bg-neutral-200  dark:bg-gray-800 text-white z-10">
               
               <Sidebar />
             </div>
           </div>
-        </>
+        </div>
       )}
     </DataProvider>
   );

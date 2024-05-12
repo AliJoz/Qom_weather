@@ -36,7 +36,7 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
                 <span className="text-xs  x:text-base   md:text-lg   text-zinc-800 dark:text-white font-iranBlack tracking-wide ">
                   دما واقعی
                 </span>
-                <span className="text-base  x:text-lg text-zinc-700  dark:text-neutral-200  font-yekan">
+                <span className="text-base  x:text-lg text-zinc-700  dark:text-neutral-200 font-iranBold">
                   {item.temp.toFixed(2)}°
                 </span>
               </div>
@@ -44,7 +44,7 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
                 <span className="text-xs  x:text-base md:text-lg text-zinc-800 dark:text-white  font-iranBlack tracking-wide">
                   سرعت باد
                 </span>
-                <span className="text-xs  x:text-lg text-zinc-700  dark:text-neutral-200  font-yekan">
+                <span className="text-xs  x:text-lg text-zinc-700  dark:text-neutral-200  font-iranBold">
                   {(item.speed / 3.6).toFixed(2)} m/s
                 </span>
               </div>
@@ -52,7 +52,7 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
                 <span className="text-xs  x:text-base md:text-lg text-zinc-800 dark:text-white  font-iranBlack tracking-wide">
                   جهت باد
                 </span>
-                <span className="text-xs  x:text-lg text-zinc-700  dark:text-neutral-200  font-yekan ">
+                <span className="text-xs  x:text-lg text-zinc-700  dark:text-neutral-200  font-iranBold ">
                   {showDir(item.dir)}
                 </span>
               </div>
@@ -60,7 +60,7 @@ const ViewToday: React.FC<ViewTodayProps> = ({ weatherData }) => {
                 <span className="text-zinc-800 dark:text-white text-[10px] p-0 m-0  x:text-base md:text-lg text-wrap font-iranBlack tracking-wide">
                   میزان گرد و غبار
                 </span>
-                <span className="text-zinc-700 dark:text-neutral-200  text-base  x:text-lg font-yekan">
+                <span className="text-zinc-700 dark:text-neutral-200  text-base  x:text-lg font-iranBold">
                   {item.dust.toFixed(3)}
                 </span>
               </div>
