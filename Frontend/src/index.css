@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Iran Block";
+    src: local("Iran Block"), url("./assets/font/IRANSansXFaNum-DemiBold.ttf");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Iran Demibold";
+    src: local("Iran Demibold"), url("./assets/font/IRANSansXFaNum-DemiBold.ttf");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "iran yekan";
+    src: local("iran yekan"), url("./assets/font/IRANYekanLight.ttf");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "iran bold";
+    src: local("iran yekan bold"), url("./assets/font/IRANSansWeb_Bold.ttf");
+    font-display: swap;
+  }
+}
