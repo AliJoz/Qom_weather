@@ -24,8 +24,8 @@ const Today: React.FC = () => {
     return hour;
   };
 
-  // فیلتر کردن داده‌ها برای امروز و ساعت 4
-  const filteredData = data.filter((item) => {
+  // فیلتر کردن داده‌ها برای امروز و ساعت جاری
+  const filteredData = data.filter((item: WeatherData) => {
     const datePart = item.time.split("T")[0];
     const [year, month, day] = datePart.split("-");
 
@@ -33,15 +33,42 @@ const Today: React.FC = () => {
     const nowDate = new Date();
     const currentDay = String(nowDate.getDate()).padStart(2, "0");
     const currentMonth = String(nowDate.getMonth() + 1).padStart(2, "0");
+    const currentHour = String(nowDate.getHours()).padStart(2, "0");
 
     // فیلتر کردن بر اساس روز و ماه جاری
     const dateMatch = month === currentMonth && day === currentDay;
-const Hu=String(nowDate.getHours());
-    // فیلتر کردن بر اساس ساعت 4
-    const hourMatch = extractHour(item.time) === Hu;
+
+    // فیلتر کردن بر اساس ساعت جاری
+    const hourMatch = extractHour(item.time) === currentHour;
 
     return dateMatch && hourMatch;
   });
+
+  // تابعی برای نمایش جهت باد
+  const showDir = (DataDir: string): string => {
+    const trimmedDir = DataDir.trim(); // حذف فضاهای اضافی از ابتدا و انتهای رشته
+  
+    if (trimmedDir === "N") {
+      return "شمال";
+    } else if (trimmedDir === "NE") {
+      return "شمال شرقی";
+    } else if (trimmedDir === "S") {
+      return "جنوب";
+    } else if (trimmedDir === "SE") {
+      return "جنوب شرقی";
+    } else if (trimmedDir === "NW") {
+      return "شمال غربی";
+    } else if (trimmedDir === "SW") {
+      return "جنوب غربی";
+    } else if (trimmedDir === "W") {
+      return "غرب";
+    } else if (trimmedDir === "E") {
+      return "شرق";
+    } else {
+      console.log("Unknown DataDir:", DataDir);
+      return "نامشخص";
+    }
+  };
 
   console.log("Filtered Data:", filteredData);
 
@@ -68,10 +95,10 @@ const Hu=String(nowDate.getHours());
                     </div>
                     <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
                       <span className="text-sm">جهت باد</span>
-                      <span className="text-lg">{item.dir}</span>
+                      <span className="text-lg">{showDir(item.dir)}</span>
                     </div>
                     <div className="flex flex-col items-center font-yekan">
-                      <span className="text-sm">میزان گرد وغبار   </span>
+                      <span className="text-sm">میزان گرد و غبار</span>
                       <span className="text-lg">{item.dust.toFixed(3)}</span>
                     </div>
                   </div>
