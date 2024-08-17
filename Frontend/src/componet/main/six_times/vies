@@ -84,7 +84,7 @@ const WeatherDisplay: React.FC = () => {
 
   return (
     <div>
-      <h1>Weather Data Grouped by Dynamic 3-Hour Blocks</h1>
+      
       {timeBlocks.map((block, index) => {
         // استخراج آرایه‌ای از دماهای موجود در بلاک
         const temperatures = block.data.map((item) => item.temp);

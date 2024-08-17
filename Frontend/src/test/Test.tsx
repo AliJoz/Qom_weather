@@ -81,6 +81,7 @@ const WeatherDisplay: React.FC = () => {
       .padStart(2, "0")}`;
   };
   // let i=0;
+console.log(timeBlocks);
 
   return (
     <div>
