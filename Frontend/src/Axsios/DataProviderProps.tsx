@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-
+import Loder from '../componet/Loder/Loder'
 interface WeatherData {
     id: number;
     temp: number;
@@ -41,7 +41,7 @@ const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
         fetchData();
     }, [fetchData]);
 
-    if (loading) return <div>Loading...</div>;
+    if (loading) return <Loder />;
     if (error) return <div>{error}</div>;
 
     return (

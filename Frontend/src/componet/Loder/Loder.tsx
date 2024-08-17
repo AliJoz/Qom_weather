@@ -1,12 +1,12 @@
-import React from 'react';
-import './Loader.css'; 
+import React from "react";
+import './Loadr.css';
 
-const Loader: React.FC = () => {
+const Loders: React.FC = () => {
   return (
-    <div className="loader-container">
-      <div className="loader"></div>
+    <div className="loader-container bg-zinc-100">
+      <div className="Loders tracking-wider font-yekan">...اطلاعات در حال لود هست</div>
     </div>
   );
 };
 
-export default Loader;
+export default Loders;
