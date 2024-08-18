@@ -70,7 +70,7 @@ const Today: React.FC = () => {
     }
   };
 
-  console.log("Filtered Data:", filteredData);
+  // console.log("Filtered Data:", filteredData);
 
   // JSX برای رندر کردن داده‌های فیلتر شده
   return (

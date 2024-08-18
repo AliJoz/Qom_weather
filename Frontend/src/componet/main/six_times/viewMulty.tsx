@@ -27,26 +27,171 @@ const formatTime = (time: string) => {
   const date = new Date(time);
   return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
 };
+////// icons
+const ShowIcons = (temp: number, hum: number, timeClock: string): string => {
+  // تبدیل timeClock به عدد برای مقایسه ساده‌تر
+  const hour = parseInt(timeClock, 10);
+  
+  // بررسی وضعیت زمانی (روز و شب)
+  if (hour >= 6 && hour < 17) {
+    // day
+    
+    const ranges = [
+      {
+        min: -Infinity,
+        max: 10,
+        action: () => {
+          return "/icons/snowy.svg";
+        },
+      },
+      {
+        min: 10,
+        max: 20,
+        action: () => {
+          return "/icons/rainy.svg";
+        },
+      },
+      {
+        min: 20,
+        max: 30,
+        action: () => {
+          return "/icons/cloudyday.svg";
+        },
+      },
+      {
+        min: 30,
+        max: 40,
+        action: () => {
+          return "/icons/day.svg";
+        },
+      },
+      {
+        min: 40,
+        max: 50,
+        action: () => {
+          return "/icons/day.svg";
+        },
+      },
+      {
+        min: 50,
+        max: Infinity,
+        action: () => {
+          return "/icons/day.svg";
+        },
+      },
+    ];
+
+    for (const range of ranges) {
+      if (hum >= range.min && hum < range.max) {
+        return range.action();
+      } else {
+        console.log("d");
+      }
+    }
+  } else if (hour < 6 || hour >= 17) {
+    // shab
+
+    const ranges = [
+      {
+        min: -Infinity,
+        max: 10,
+        action: () => {
+          return "/icons/cloudynight.svg";
+        },
+      },
+      {
+        min: 10,
+        max: 20,
+        action: () => {
+          return "/icons/cloudynight.svg";
+        },
+      },
+      {
+        min: 20,
+        max: 30,
+        action: () => {
+          return "/icons/cloudynight.svg";
+        },
+      },
+      {
+        min: 30,
+        max: 40,
+        action: () => {
+          return "/icons/cloudynight.svg";
+        },
+      },
+      {
+        min: 40,
+        max: 50,
+        action: () => {
+          return "/icons/night.svg";
+        },
+      },
+      {
+        min: 50,
+        max: Infinity,
+        action: () => {
+          return "/icons/night.svg";
+        },
+      },
+    ];
+
+    for (const range of ranges) {
+      if (hum >= range.min && hum < range.max) {
+        return range.action();
+      }
+    }
+  } else {
+    // برای تست خطا
+    alert("error");
+  }
+  return " logo";
+};
+
+///////
+
 const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
-  // استخراج آرایه‌ای از دماهای موجود در بلاک
   const temperatures = data.data.map((item) => item.temp);
-  // پیدا کردن کمترین و بیشترین دما
+
   const minTemp = Math.min(...temperatures);
   const maxTemp = Math.max(...temperatures);
 
+  // const humidity = data.data.find(
+  //   (item) => formatTime(item.time) === formatTime(data.startTime)
+
+  // )?.hum;
+  const Slicehours = (times: string) => {
+    return times.split(":")[0];
+  };
+
+  const humidity = data.data.find((item) => {
+    const startTimeHour = Slicehours(formatTime(data.startTime));
+    const itemTimeHour = Slicehours(formatTime(item.time));
+
+    // لاگ گرفتن از ساعت‌های جدا شده
+    // console.log("Start Time Hour:", startTimeHour);
+    // console.log("Item Time Hour:", itemTimeHour);
+
+    // مقایسه ساعت‌ها
+    return itemTimeHour === startTimeHour;
+  })?.hum;
+
+  const icon = ShowIcons(
+    (maxTemp + minTemp) / 2,
+    humidity || 0,
+    Slicehours(formatTime(data.startTime))
+  );
+  console.log(icon);
+
   return (
     <>
-      {/* <h2>{`From: ${formatTime(data.startTime)} To: ${formatTime(data.endTime)}`}</h2> */}
-      {/* <p>{`Min Temperature: ${minTemp.toFixed(2)}°C`}</p>
-      <p>{`Max Temperature: ${maxTemp.toFixed(2)}°C`}</p> */}
-      <br /> <hr />
       <div className="flex">
         <div className="flex flex-col items-center">
           <span className="text-xs sm:text-sm font-iranBlack">
             {formatTime(data.startTime)}
           </span>
           <img
-            src="/icons/cloudy-day-2.svg"
+            src={icon}
             alt="Weather Icon"
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
           />
