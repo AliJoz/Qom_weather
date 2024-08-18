@@ -167,12 +167,6 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
   const humidity = data.data.find((item) => {
     const startTimeHour = Slicehours(formatTime(data.startTime));
     const itemTimeHour = Slicehours(formatTime(item.time));
-
-    // لاگ گرفتن از ساعت‌های جدا شده
-    // console.log("Start Time Hour:", startTimeHour);
-    // console.log("Item Time Hour:", itemTimeHour);
-
-    // مقایسه ساعت‌ها
     return itemTimeHour === startTimeHour;
   })?.hum;
 

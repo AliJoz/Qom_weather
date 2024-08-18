@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Today from "./todays/today";
-// import dayIcon from "./six_times/day.svg"; // Import the SVG icon
 import WeatherDisplay from "./six_times/dataMulty";
-import ViewWeather from './six_times/viewMulty'
+import ViewWeather from './six_times/viewMulty';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
+
 interface TimeBlock {
   time: string;
   temperature: number;
@@ -10,39 +14,9 @@ interface TimeBlock {
   icons: string;
 }
 
-// const MultyWeather = (): TimeBlock[] => {
-//   return [
-//     { time: "12:00", temperature: 25, temp: "25°C", icons: dayIcon },
-//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
-//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
-//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
-//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
-//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
-//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
-//     { time: "15:00", temperature: 28, temp: "28°C", icons: dayIcon },
-//   ];
-// };
-
 interface ViewWeatherProps {
   data: TimeBlock;
 }
-
-// const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
-//   return (
-//     <div className="flex">
-//       <div className="flex flex-col items-center">
-//         <span className="text-xs sm:text-sm font-iranBlack">6:00 AM</span>
-//         <img
-//           src="/public/icons/animated/night.svg"
-//           alt="Cloudy"
-//           className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
-//         />
-//         <span className="text-base sm:text-lg font-iran-Dem">25°</span>
-//       </div>
-//       <div className="w-0.5 h-20 bg-slate-600 block ml-3"></div>
-//     </div>
-//   );
-// };
 
 const Right: React.FC = () => {
   const weatherDataArray = WeatherDisplay();
@@ -53,11 +27,22 @@ const Right: React.FC = () => {
         <h3 className="flex justify-end text-lg sm:text-xl mb-4 font-bold tracking-wide">
           امروز
         </h3>
-        <div className="flex justify-between">
+        <Swiper
+          className="swiper"
+          modules={[Navigation]}
+          slidesPerView={5}
+          direction={window.innerWidth <= 760 ? "vertical" : "horizontal"}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+        >
           {weatherDataArray.map((weatherData, index) => (
-            <ViewWeather key={index} data={weatherData} />
+            <SwiperSlide key={index}>
+              <ViewWeather data={weatherData} />
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
       <div className="bg-gray-700 p-4 lg:p-1 rounded-lg w-full sm:w-[500px] md:w-[600px] lg:w-[700px]">
         <Today />
