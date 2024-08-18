@@ -46,16 +46,16 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
             {formatTime(data.startTime)}
           </span>
           <img
-            src="./day.svg"
+            src="/icons/cloudy-day-2.svg"
             alt="Weather Icon"
             className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16"
           />
           <div className="flex items-center space-x-1">
-            <span className="text-base sm:text-lg font-iran-Dem text-red-600">
+            <span className="sm:text-xs md:text-sm text-base font-iran-Dem text-red-600">
               {maxTemp.toFixed(2)}
             </span>
             <span>/</span>
-            <span className="text-base sm:text-lg font-iran-Dem text-cyan-400">
+            <span className="sm:text-xs md:text-sm text-base  font-iran-Dem text-cyan-400">
               {minTemp.toFixed(2)}
             </span>
           </div>

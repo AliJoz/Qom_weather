@@ -25,8 +25,7 @@ const App: React.FC = () => {
         <Loders /> // نمایش لودر در حین بارگذاری
       ) : (
         <div>
-          <>
-          <Test /></>
+         
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/setting" element={<MainFooter />} />
