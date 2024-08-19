@@ -27,139 +27,70 @@ const formatTime = (time: string) => {
   const date = new Date(time);
   return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
 };
+
 ////// icons
-const ShowIcons = (temp: number, hum: number, timeClock: string): string => {
-  // تبدیل timeClock به عدد برای مقایسه ساده‌تر
+const ShowIcons = (
+  tempMin: number,
+  tempMax: number,
+  hum: number,
+  timeClock: string
+): string => {
+
   const hour = parseInt(timeClock, 10);
-  
-  // بررسی وضعیت زمانی (روز و شب)
-  if (hour >= 6 && hour < 17) {
-    // day
-    
-    const ranges = [
-      {
-        min: -Infinity,
-        max: 10,
-        action: () => {
-          return "/icons/snowy.svg";
-        },
-      },
-      {
-        min: 10,
-        max: 20,
-        action: () => {
-          return "/icons/rainy.svg";
-        },
-      },
-      {
-        min: 20,
-        max: 30,
-        action: () => {
-          return "/icons/cloudyday.svg";
-        },
-      },
-      {
-        min: 30,
-        max: 40,
-        action: () => {
-          return "/icons/day.svg";
-        },
-      },
-      {
-        min: 40,
-        max: 50,
-        action: () => {
-          return "/icons/day.svg";
-        },
-      },
-      {
-        min: 50,
-        max: Infinity,
-        action: () => {
-          return "/icons/day.svg";
-        },
-      },
-    ];
+  const isDayTime = hour >= 6 && hour < 18; // بررسی روز یا شب بودن
 
-    for (const range of ranges) {
-      if (hum >= range.min && hum < range.max) {
-        return range.action();
-      } else {
-        console.log("d");
-      }
+  const avgTemp = (tempMin + tempMax) / 2; // محاسبه دمای میانگین
+  let selectedIcon = "/img/404/404.jpg"; // مقدار پیش‌فرض
+
+  if (avgTemp >= 10 && avgTemp <= 20) {
+    // دمای میانگین بین 10 تا 20 درجه
+    if (hum >= 0 && hum <= 15) {
+      selectedIcon = isDayTime ? "/icons/day.svg" : "/icons/night.svg"; // آفتابی یا شب
+    } else if (hum > 15 && hum <= 30) {
+      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/cloudynight.svg"; // ابری روز یا ابری شب
+    } else if (hum > 30) {
+      selectedIcon = isDayTime ? "/icons/rainy.svg" : "/icons/thunder.svg"; // بارانی روز یا تگرگ شب
     }
-  } else if (hour < 6 || hour >= 17) {
-    // shab
-
-    const ranges = [
-      {
-        min: -Infinity,
-        max: 10,
-        action: () => {
-          return "/icons/cloudynight.svg";
-        },
-      },
-      {
-        min: 10,
-        max: 20,
-        action: () => {
-          return "/icons/cloudynight.svg";
-        },
-      },
-      {
-        min: 20,
-        max: 30,
-        action: () => {
-          return "/icons/cloudynight.svg";
-        },
-      },
-      {
-        min: 30,
-        max: 40,
-        action: () => {
-          return "/icons/cloudynight.svg";
-        },
-      },
-      {
-        min: 40,
-        max: 50,
-        action: () => {
-          return "/icons/night.svg";
-        },
-      },
-      {
-        min: 50,
-        max: Infinity,
-        action: () => {
-          return "/icons/night.svg";
-        },
-      },
-    ];
-
-    for (const range of ranges) {
-      if (hum >= range.min && hum < range.max) {
-        return range.action();
-      }
+  } else if (avgTemp > 20 && avgTemp <= 30) {
+    // دمای میانگین بین 20 تا 30 درجه
+    if (hum >= 0 && hum <= 15) {
+      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/cloudynight.svg"; // ابری روز یا ابری شب
+    } else if (hum > 15 && hum <= 30) {
+      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/cloudynight.svg"; // ابری روز یا ابری شب
+    } else if (hum > 30) {
+      selectedIcon = isDayTime ? "/icons/rainy.svg" : "/icons/thunder.svg"; // بارانی روز یا تگرگ شب
     }
-  } else {
-    // برای تست خطا
-    alert("error");
+  } else if (avgTemp > 30 && avgTemp <= 40) {
+    // دمای میانگین بین 30 تا 40 درجه
+    if (hum >= 0 && hum <= 20) {
+      selectedIcon = isDayTime ? "/icons/cloudyday.svg" : "/icons/night.svg"; // ابری آفتابی روز یا شب
+    } else if (hum > 20) {
+      selectedIcon = isDayTime ? "/icons/rainy.svg" : "/icons/thunder.svg"; // آفتابی بارانی روز یا تگرگ شب
+    }
+  } else if (avgTemp > 40) {
+    // دمای میانگین بالای 40 درجه
+    selectedIcon = isDayTime ? "/icons/day.svg" : "/icons/night.svg"; // آفتابی روز یا شب
   }
-  return " logo";
+
+  return selectedIcon;
 };
 
 ///////
 
 const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
-  const temperatures = data.data.map((item) => item.temp);
+  if (!data.data || data.data.length === 0) {
+    return <div className="hidden">اطلاعات دردیتا بیس نیست  </div>;      
+  }
+
+  const temperatures = data.data.map((item) => item.temp).filter(temp => temp !== undefined && temp !== null);
+
+  if (temperatures.length === 0) {
+    return <div>اطلاعات در دسترس نیست</div>;
+  }
 
   const minTemp = Math.min(...temperatures);
   const maxTemp = Math.max(...temperatures);
 
-  // const humidity = data.data.find(
-  //   (item) => formatTime(item.time) === formatTime(data.startTime)
-
-  // )?.hum;
   const Slicehours = (times: string) => {
     return times.split(":")[0];
   };
@@ -170,12 +101,16 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
     return itemTimeHour === startTimeHour;
   })?.hum;
 
+  if (humidity === undefined || humidity === null) {
+    return <div>اطلاعات در دسترس نیست</div>; // اگر هیچ رطوبت معتبری وجود ندارد
+  }
+
   const icon = ShowIcons(
-    (maxTemp + minTemp) / 2,
-    humidity || 0,
+    minTemp,
+    maxTemp,
+    humidity,
     Slicehours(formatTime(data.startTime))
   );
-  console.log(icon);
 
   return (
     <>
