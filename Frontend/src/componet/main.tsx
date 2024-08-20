@@ -8,9 +8,6 @@ const Main: React.FC = () => {
     <>
       <div className="flex flex-col justify-center pl-9 relative ">
           <Show />
-       
-
-        
       </div>
       <div className=" flex-1 lg:flex  justify-between p-6 bg-gray-800 text-white grid grid-cols-1 lg:grid-cols-2 gap-5 ">
         <Left />
