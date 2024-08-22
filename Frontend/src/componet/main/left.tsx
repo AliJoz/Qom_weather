@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Left: React.FC = () => {
-
   const getLast7DaysWithWeather = () => {
     const daysOfWeek = [
       'یکشنبه',
@@ -17,17 +16,25 @@ const Left: React.FC = () => {
 
     for (let i = 0; i < 7; i++) {
       const date = new Date();
-      date.setDate(date.getDate() - i);    
+      date.setDate(date.getDate() - i);  
 
       const dayIndex = date.getDay(); 
-      const dayName = daysOfWeek[dayIndex];    
+      let dayName = daysOfWeek[dayIndex]; 
 
+      
+      if (i === 0) {
+        dayName = 'امروز';
+      } else if (i === 1) {
+        dayName = 'دیروز';
+      }
+
+      
       daysData.push({
         day: dayName,
         date: date.toLocaleDateString('fa-IR'),
-        maxTemp: Math.floor(Math.random() * 15 + 20),  
-        minTemp: Math.floor(Math.random() * 10 + 10),     
-        icon: 'snowy-1.svg'   
+        maxTemp: Math.floor(Math.random() * 15 + 20), 
+        minTemp: Math.floor(Math.random() * 10 + 10),   
+        icon: 'snowy-1.svg' 
       });
     }
 

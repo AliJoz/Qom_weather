@@ -31,10 +31,16 @@ const Sidebar: React.FC = () => {
             <span className="text-xs mt-2">ناحیه ها</span>
           </div>
           <div className="flex flex-col items-center">
+            {/* <svg className="w-6 h-6">
+              <use href="#map"></use>
+            </svg>
+            <span className="text-xs mt-2">نقشه</span> */}
+            <Link to="/map" className="flex flex-col items-center">
             <svg className="w-6 h-6">
               <use href="#map"></use>
             </svg>
             <span className="text-xs mt-2">نقشه</span>
+            </Link>
           </div>
           <div className="flex flex-col items-center">
             <Link to="/setting" className="flex flex-col items-center">
