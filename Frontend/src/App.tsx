@@ -8,10 +8,8 @@ import DataProvider from "./Axsios/DataProviderProps";
 import Loders from "./componet/Loder/Loder";
 import Map from "./componet/chart/chart";
 import Sidebar from "./componet/sidebar";
-import Test from "./test/Test";
 import Icons from "./componet/icons";
 
-// import ErrorBoundary from './Error/Errors'; // مسیر به `ErrorBoundary`
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
@@ -22,22 +20,24 @@ const App: React.FC = () => {
   return (
     <DataProvider>
       {loading ? (
-        <Loders /> // نمایش لودر در حین بارگذاری
+        <Loders /> 
       ) : (
-        <div>
-          <div className="float-right flex flex-row-reverse h-screen bg-gray-800 text-white">
+        <div className="flex h-screen ">
+        
+        <div className="fixed top-0 right-0 h-full  bg-gray-800 text-white flex flex-col">
             <Icons />
-            <Sidebar />
+            <Sidebar /> {/* سایدبار */}
           </div>
 
-          {/* <Test /> */}
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/map" element={<Map />} />
-            <Route path="/setting" element={<MainFooter />} />
-            <Route path="/region/:region" element={<Mainregion />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <div className="flex-grow">
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/map" element={<Map />} />
+              <Route path="/setting" element={<MainFooter />} />
+              <Route path="/region/:region" element={<Mainregion />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
         </div>
       )}
     </DataProvider>

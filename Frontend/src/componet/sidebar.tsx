@@ -8,21 +8,24 @@ const Sidebar: React.FC = () => {
       <div className="flex flex-col items-center bg-slate-600 text-white w-20 h-full py-6">
         {/* Logo */}
         <div className="mb-6">
-          <div className="bg-slate-400 w-12 h-12 flex items-center justify-center rounded-xl">
+          <Link to="/" className="bg-slate-400 w-12 h-12 flex items-center justify-center rounded-xl">
             <svg className="w-6 h-6">
               <use href="#wind"></use>
             </svg>
-          </div>
+          </Link>
         </div>
         {/* Menu Items */}
         <div className="flex flex-col space-y-6 font-yekan">
+          
           <div className="flex flex-col items-center">
+          <Link to="/" className="flex flex-col items-center">
             <img
               src="/public/icons/animated/cloudy-day-1.svg"
               alt="Weather"
               className="w-8 h-8"
             />
             <span className="text-xs mt-2">آب وهوا</span>
+            </Link>
           </div>
           <div className="flex flex-col items-center">
             <svg className="w-6 h-6">
@@ -31,10 +34,6 @@ const Sidebar: React.FC = () => {
             <span className="text-xs mt-2">ناحیه ها</span>
           </div>
           <div className="flex flex-col items-center">
-            {/* <svg className="w-6 h-6">
-              <use href="#map"></use>
-            </svg>
-            <span className="text-xs mt-2">نقشه</span> */}
             <Link to="/map" className="flex flex-col items-center">
             <svg className="w-6 h-6">
               <use href="#map"></use>

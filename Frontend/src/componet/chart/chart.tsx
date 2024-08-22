@@ -30,6 +30,7 @@ const data = [
 // کامپوننت اصلی نمودار دما
 const TemperatureChart: React.FC = () => {
   return (
+    <div className='bg-zinc-800'>
     <ResponsiveContainer width="100%" height={400}>
       <BarChart data={data} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" />
@@ -43,6 +44,7 @@ const TemperatureChart: React.FC = () => {
         <Line type="monotone" dataKey="realMinTemp" stroke="#42A5F5" strokeWidth={2} name="حداقل واقعی" />
       </BarChart>
     </ResponsiveContainer>
+    </div>
   );
 };
 

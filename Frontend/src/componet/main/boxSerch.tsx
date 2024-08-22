@@ -70,7 +70,7 @@ const Main: React.FC = () => {
     <div className="flex flex-row-reverse h-screen bg-gray-800 text-white">
      
       <div className="flex flex-col flex-1">
-        <div className="flex justify-end p-6">
+        <div className="flex justify-end p-6 pr-30">
           <div className="relative">
             <input
               type="text"
