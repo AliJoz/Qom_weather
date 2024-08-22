@@ -6,17 +6,17 @@ import Mainregion from "./componet/region/Mainregion";
 import NotFound from "./componet/NotFound/notFound";
 import DataProvider from "./Axsios/DataProviderProps";
 import Loders from "./componet/Loder/Loder";
-import Map from './componet/chart/chart'
+import Map from "./componet/chart/chart";
+import Sidebar from "./componet/sidebar";
+import Test from "./test/Test";
+import Icons from "./componet/icons";
 
-import Test from './test/Test'
 // import ErrorBoundary from './Error/Errors'; // مسیر به `ErrorBoundary`
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
-      setLoading(false);
-   
+    setLoading(false);
   }, []);
 
   return (
@@ -25,7 +25,12 @@ const App: React.FC = () => {
         <Loders /> // نمایش لودر در حین بارگذاری
       ) : (
         <div>
-         {/* <Test /> */}
+          <div className="float-right flex flex-row-reverse h-screen bg-gray-800 text-white">
+            <Icons />
+            <Sidebar />
+          </div>
+
+          {/* <Test /> */}
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/map" element={<Map />} />

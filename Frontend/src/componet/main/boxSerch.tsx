@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Icons from "../icons";
-import Sidebar from "../sidebar";
+
 import MainApp from "../main";
 
 const Main: React.FC = () => {
@@ -69,8 +68,7 @@ const Main: React.FC = () => {
 
   return (
     <div className="flex flex-row-reverse h-screen bg-gray-800 text-white">
-      <Icons />
-      <Sidebar />
+     
       <div className="flex flex-col flex-1">
         <div className="flex justify-end p-6">
           <div className="relative">
