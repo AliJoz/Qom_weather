@@ -1,6 +1,6 @@
 import React from 'react';
 import useWeatherData from '../../hook/sevenDay/seven';
-
+import ShowIcons from '../../hook/Showicons/Showiconday';
 const Left: React.FC = () => {
   const getLast7DaysWithWeather = () => {
     const daysOfWeek = [
@@ -38,7 +38,7 @@ const Left: React.FC = () => {
         date: date.toLocaleDateString('fa-IR'),
         maxTemp: maxTemp, // دمای واقعی
         minTemp: minTemp, // دمای واقعی
-        icon: 'snowy-1.svg' // فرض شده که آیکون ثابت است. می‌توانید از useWeatherData برای آیکون هم استفاده کنید
+        icon: ShowIcons({ tempMin: minTemp, tempMax: maxTemp })
       });
     }
 
@@ -58,13 +58,13 @@ const Left: React.FC = () => {
     </div>
   ) : (
     <div className="bg-gray-700 p-4 rounded-lg w-full sm:w-[100px] md:w-[200px] lg:w-[300px]">
-      <h3 className="text-lg sm:text-xl mb-4 font-bold">7 روز گذشته</h3>
+      <h3 className="text-lg sm:text-xl mb-4 font-bold text-end">هفته اخیر  </h3>
       <div className="space-y-2">
         {daysData.map((day, index) => (
           <div key={index} className="flex justify-between">
             <span className="flex items-center font-iranBlack">
               <img
-                src={`/icons/animated/${day.icon}`}
+                src={day.icon}
                 alt={day.day}
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 ml-2"
               />
