@@ -14,7 +14,7 @@ const ViewToday = () => {
     // اگر داده‌ای وجود نداشت، یک div خالی برگردانید یا return null برای رندر نشدن هیچ چیزی
     return <div></div>; // یا return null;
   }
-console.log(item);
+// console.log(item);
 const formatTime = (time: string) => {
     const date = new Date(time);
     return `${date.getHours()}:${date.getMinutes().toString().padStart(2, "0")}`;
@@ -45,7 +45,7 @@ const Slicehours = (times: string) => {
                     <img
                         src={icon}// Path should be relative to the public folder
                         alt="Weather Icon"
-                        className="w-44 h-40"
+                        className="w-44 h-40 mr-20"
                     />
                 </div>
             </div>

@@ -57,7 +57,7 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
   })?.hum;
 
   if (humidity === undefined || humidity === null) {
-    return <div>اطلاعات در دسترس نیست</div>; // اگر هیچ رطوبت معتبری وجود ندارد
+    return <div className="">اطلاعات در دسترس نیست</div>; // اگر هیچ رطوبت معتبری وجود ندارد
   }
   
   const icon = ShowIcons({

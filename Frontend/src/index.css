@@ -10,7 +10,8 @@
   }
   @font-face {
     font-family: "Iran Demibold";
-    src: local("Iran Demibold"), url("./assets/font/IRANSansXFaNum-DemiBold.ttf");
+    src: local("Iran Demibold"),
+      url("./assets/font/IRANSansXFaNum-DemiBold.ttf");
     font-display: swap;
   }
   @font-face {
@@ -22,5 +23,31 @@
     font-family: "iran bold";
     src: local("iran yekan bold"), url("./assets/font/IRANSansWeb_Bold.ttf");
     font-display: swap;
+  }
+}
+/* styles.css */
+@layer components {
+  .card {
+    @apply bg-gray-800 p-6 rounded-lg shadow-lg text-white;
+  }
+
+  .card-header {
+    @apply flex items-center space-x-2;
+  }
+
+  .card-icon {
+    @apply p-2 rounded-full;
+  }
+
+  .card-title {
+    @apply text-xl font-bold;
+  }
+
+  .card-text {
+    @apply mt-4;
+  }
+
+  .bg-dark-blue {
+    @apply bg-[#1a202c];
   }
 }

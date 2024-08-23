@@ -22,7 +22,7 @@ const ViewToday = () => {
               </div>
               <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
                 <span className="text-sm">سرعت باد</span>
-                <span className="text-lg">{item.speed} km/h</span>
+                <span className="text-lg">{(item.speed/3.6).toFixed(2)} m/s</span>
               </div>
               <div className="flex flex-col items-center font-yekan mb-4 sm:mb-0">
                 <span className="text-sm">جهت باد</span>
