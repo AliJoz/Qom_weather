@@ -61,5 +61,6 @@ export default {
       addVariant("child", "&>*");
       addVariant("child-hover", "&>*:hover");
     },
+    require('tailwind-scrollbar'),
   ],
 };

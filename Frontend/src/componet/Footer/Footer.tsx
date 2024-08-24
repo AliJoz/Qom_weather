@@ -12,7 +12,7 @@ import {
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gradient-to-r from-blue-900 to-purple-900 text-white p-8  bottom-0 left-0 w-full ">
+    <footer  className="bg-gradient-to-r from-blue-900 to-purple-900 text-white p-8  bottom-0 left-0 w-full ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo and Address */}
         <div className="flex flex-col items-center md:items-start font-yekan space-y-5">

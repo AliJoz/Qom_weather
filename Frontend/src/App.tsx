@@ -31,7 +31,7 @@ const App: React.FC = () => {
               <Sidebar /> {/* سایدبار */}
             </div>
 
-            <div className="flex-grow">
+            <div className="flex-grow ">
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/map" element={<Map />} />
