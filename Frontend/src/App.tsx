@@ -9,8 +9,8 @@ import Loders from "./componet/Loder/Loder";
 import Map from "./componet/chart/chart";
 import Sidebar from "./componet/sidebar";
 import Icons from "./componet/icons";
-import Region from './componet/region/componet'
-import Test from "./test/Test"
+import Region from "./componet/region/componet";
+import Test from "./test/Test";
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
@@ -21,29 +21,27 @@ const App: React.FC = () => {
   return (
     <DataProvider>
       {loading ? (
-        <Loders /> 
+        <Loders />
       ) : (
         <>
-      {/* <Test /> */}
-        <div className="flex h-screen ">
-        
-        <div className="fixed top-0 right-0 h-full  bg-gray-800 text-white flex flex-col">
-            <Icons />
-            <Sidebar /> {/* سایدبار */}
-          </div>
+          {/* <Test /> */}
+          <div className="flex h-screen ">
+            <div className="fixed top-0 right-0 h-full  bg-gray-800 text-white flex flex-col">
+              <Icons />
+              <Sidebar /> {/* سایدبار */}
+            </div>
 
-          <div className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/map" element={<Map />} />
-              <Route path="/setting" element={<MainFooter />} />
-              <Route path="/Region" element={<Region />} />
-              <Route path="/region/:region" element={<Mainregion />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-            
+            <div className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Main />} />
+                <Route path="/map" element={<Map />} />
+                <Route path="/setting" element={<MainFooter />} />
+                <Route path="/region" element={<Region />} />
+                <Route path="/region/:region" element={<Mainregion />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </div>
           </div>
-        </div>
         </>
       )}
     </DataProvider>

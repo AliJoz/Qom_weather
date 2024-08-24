@@ -28,7 +28,7 @@ const Sidebar: React.FC = () => {
             </Link>
           </div>
           <div className="flex flex-col items-center">
-          <Link to="/Region" className="flex flex-col items-center">
+          <Link to="/region" className="flex flex-col items-center">
             <svg className="w-6 h-6">
               <use href="#citys"></use>
             </svg>
