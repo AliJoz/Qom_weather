@@ -10,7 +10,7 @@ import Map from "./componet/chart/chart";
 import Sidebar from "./componet/sidebar";
 import Icons from "./componet/icons";
 import Region from "./componet/region/componet";
-import Test from "./test/Test";
+
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
@@ -24,14 +24,9 @@ const App: React.FC = () => {
         <Loders />
       ) : (
         <>
-          {/* <Test /> */}
-          <div className="flex h-screen ">
-            <div className="fixed top-0 right-0 h-full  bg-gray-800 text-white flex flex-col">
-              <Icons />
-              <Sidebar /> {/* سایدبار */}
-            </div>
-
-            <div className="flex-grow ">
+          <div className="flex h-screen">
+            {/* محتوای اصلی */}
+            <div className="flex-grow mr-20"> {/* اضافه کردن margin برای فاصله از سایدبار */}
               <Routes>
                 <Route path="/" element={<Main />} />
                 <Route path="/map" element={<Map />} />
@@ -40,6 +35,12 @@ const App: React.FC = () => {
                 <Route path="/region/:region" element={<Mainregion />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
+            </div>
+
+            {/* سایدبار و آیکون‌ها */}
+            <div className="fixed top-0 right-0 h-full w-20 bg-gray-800 text-white z-10"> 
+              <Icons />
+              <Sidebar />
             </div>
           </div>
         </>

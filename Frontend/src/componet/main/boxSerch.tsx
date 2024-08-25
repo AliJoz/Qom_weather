@@ -99,7 +99,7 @@ const Main: React.FC = () => {
           <div className="relative">
             <input
               type="text"
-              placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه یک"
+              placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه"
               className="flex p-2 w-96 bg-gray-700 text-right pr-2 rounded-lg font-yekan"
               value={inputValue}
               onClick={handleInputClick}

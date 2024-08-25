@@ -20,11 +20,11 @@ interface WeatherData {
 
 const TemperatureChart: React.FC = () => {
   const weatherData = useContext(DataContext);
-  const daysData: { date: string; minTemp: number; maxTemp: number }[] = [];
+  const daysData: { date: string; minTemp: string; maxTemp: string }[] = [];
 
   for (let i = 0; i < 30; i++) {
     const date = new Date();
-    date.setDate(date.getDate() - i);
+    date.setDate(date.getDate() - (i+1));
 
     const formattedDate = date.toISOString().split('T')[0];
     const { minTemp, maxTemp } = useWeatherData(formattedDate, weatherData);
@@ -37,18 +37,21 @@ const TemperatureChart: React.FC = () => {
     ) {
       daysData.push({
         date: date.toLocaleDateString('fa-IR'),
-        maxTemp,
-        minTemp,
+        maxTemp: maxTemp.toFixed(2),
+        minTemp: minTemp.toFixed(2),
       });
     }
   }
 
+  // معکوس کردن ترتیب داده‌ها برای نمایش از چپ به راست
+  const reversedDaysData = [...daysData].reverse();
+
   return (
-    <div className='bg-zinc-800 h-screen w-[95%]'>
-      <ResponsiveContainer width="100%" height={500}>
-        <BarChart data={daysData} margin={{ top: 20, right: 30, left: 0, bottom: 0 }}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
+    <div className='bg-zinc-800 h-screen w-[93%]'>
+      <ResponsiveContainer width="100%" height={600}>
+        <BarChart data={reversedDaysData} margin={{ top: 10, right: 90, left: -25, bottom: 0 }}>
+          <CartesianGrid strokeDasharray="2 4" />
+          <XAxis dataKey="date" tick={{ fontSize: 12, fill: "#ffffff", fontFamily: 'IRANSans' }}  />
           <YAxis />
           <Tooltip />
           <Legend />
