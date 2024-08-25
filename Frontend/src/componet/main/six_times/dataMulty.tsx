@@ -1,5 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import { DataContext } from "../../../Axsios/DataProviderProps";
+import React, { useState, useEffect, useRef } from "react";
 
 interface WeatherData {
   id: number;
@@ -20,13 +19,12 @@ interface TimeBlock {
   data: WeatherData[];
 }
 
-const useWeatherData = (): TimeBlock[] => {
-  const data = useContext(DataContext);
+const useWeatherData = (inputData: WeatherData[]): TimeBlock[] => {
   const [timeBlocks, setTimeBlocks] = useState<TimeBlock[]>([]);
   const previousTimeRef = useRef(new Date());
 
   useEffect(() => {
-    createTimeBlocks(data); 
+    createTimeBlocks(inputData); 
 
     const checkTimeChange = () => {
       const currentTime = new Date();
@@ -34,7 +32,7 @@ const useWeatherData = (): TimeBlock[] => {
         currentTime.getHours() !== previousTimeRef.current.getHours() ||
         currentTime.getMinutes() !== previousTimeRef.current.getMinutes()
       ) {
-        createTimeBlocks(data);
+        createTimeBlocks(inputData);
         previousTimeRef.current = currentTime;
       }
 
@@ -44,7 +42,7 @@ const useWeatherData = (): TimeBlock[] => {
     checkTimeChange(); 
 
     return () => clearTimeout(checkTimeChange as unknown as number); // Cleanup on unmount
-  }, [data]);
+  }, [inputData]);
 
   const createTimeBlocks = (data: WeatherData[]) => {
     const currentTime = new Date();
@@ -72,8 +70,7 @@ const useWeatherData = (): TimeBlock[] => {
     setTimeBlocks(blocks);
   };
 
-
-  return [...timeBlocks]; 
+  return timeBlocks; 
 };
 
 export default useWeatherData;

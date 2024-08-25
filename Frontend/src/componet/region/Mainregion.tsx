@@ -1,35 +1,50 @@
-import React from "react";
-import { useParams,Navigate  } from "react-router-dom";
+import React, { useContext } from "react";
+import { useParams, Navigate } from "react-router-dom";
+import { DataContext } from "../../Axsios/DataProviderProps";
+import Main from "../main";
+
 type RegionDataType = {
-  [key: string]: string;
+    [key: string]: {
+        info: string;
+        deviceId: number;
+    };
 };
 
 const regionData: RegionDataType = {
-  "منطقه یک": "اطلاعات مربوط به منطقه یک",
-  "منطقه دو": "اطلاعات مربوط به منطقه دو",
-  "منطقه سه": "اطلاعات مربوط به منطقه سه",
-  "منطقه چهار": "اطلاعات مربوط به منطقه چهار",
-  "منطقه پنج": "اطلاعات مربوط به منطقه پنج",
-  "منطقه شش": "اطلاعات مربوط به منطقه شش",
-  "منطقه هفت": "اطلاعات مربوط به منطقه هفت",
-  "منطقه هشت": "اطلاعات مربوط به منطقه هشت",
+    "منطقه سه": { info: "اطلاعات مربوط به منطقه سه", deviceId: 1 },
+    "منطقه پنج": { info: "اطلاعات مربوط به منطقه پنج", deviceId: 2 },
 };
 
-
-
 const MainRegion: React.FC = () => {
-  const { region } = useParams<{ region?: string }>(); 
+    const { region } = useParams<{ region?: string }>();
+    const data = useContext(DataContext);
 
-  if (!region || !regionData[region]) {
-    return <Navigate to="../NotFound/notFound.tsx" replace />;
-  }
+    let filteredData = data;
+    let info = "تمام داده‌های موجود";
 
-  return (
-    <div>
-      <h2>{region}</h2>
-      <p>{regionData[region]}</p>
-    </div>
-  );
+    if (region && regionData[region]) {
+        const { deviceId } = regionData[region];
+        filteredData = data.filter(item => item.device_id === deviceId);
+        info = regionData[region].info;
+    } else if (!region) {
+        // اگر هیچ منطقه‌ای انتخاب نشده باشد، داده‌های هر دو منطقه را فیلتر کنید
+        const deviceIds = Object.values(regionData).map(region => region.deviceId);
+        filteredData = data.filter(item => deviceIds.includes(item.device_id));
+        info = "اطلاعات مربوط به هر دو منطقه";
+    } else {
+        return <Navigate to="../NotFound/notFound" replace />;
+    }
+
+    return (
+        <div className="flex flex-row-reverse h-screen bg-gray-800 text-white">
+          <div className="flex flex-col flex-1">
+            <div className="flex justify-end p-6 pr-30">
+            
+            </div>
+            <Main weatherData={filteredData} />
+          </div>
+        </div>
+      );
 };
 
 export default MainRegion;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 function FeatureCards() {
   const regionThree = "منطقه سه"; // مقدار منطقه سه
-  const regionFive = "منطقه پنج"; // مقدار منطقه پنج
+  const regionEight = "منطقه هشت"; // مقدار منطقه هشت
 
   return (
     <div className="flex flex-col h-screen justify-center items-center bg-dark-blue p-4 space-y-8">
@@ -43,11 +43,11 @@ function FeatureCards() {
             />
           </div>
           <h3 className="card-title text-2xl font-bold text-center">
-            منطقه پنج
+            منطقه هشت
           </h3>
         </div>
         <div className="flex justify-center mt-8">
-          <Link to={`/region/${regionFive}`}>
+          <Link to={`/region/${regionEight}`}>
             <button className="bg-blue-500 hover:bg-zinc-100 hover:text-zinc-800 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
               کلیک کن
             </button>

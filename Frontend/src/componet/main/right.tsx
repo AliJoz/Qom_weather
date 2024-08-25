@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Today from "./todays/today";
 import WeatherDisplay from "./six_times/dataMulty";
 import ViewWeather from './six_times/viewMulty';
@@ -6,6 +6,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
+
+interface WeatherData {
+  id: number;
+  temp: number;
+  hum: number;
+  speed: number;
+  dir: string;
+  dust: number;
+  co2: number;
+  time: string;
+  device_id: number;
+  create_date: string;
+}
 
 interface TimeBlock {
   time: string;
@@ -18,8 +31,13 @@ interface ViewWeatherProps {
   data: TimeBlock;
 }
 
-const Right: React.FC = () => {
-  const weatherDataArray = WeatherDisplay();
+interface RightProps {
+  weatherData: WeatherData[];
+}
+
+const Right: React.FC<RightProps> = ({ weatherData }) => {
+  // استفاده از weatherData به عنوان ورودی برای نمایش داده‌ها
+  const weatherDataArray = WeatherDisplay(weatherData);
 
   return (
     <div className="flex flex-col space-y-4">
@@ -45,7 +63,7 @@ const Right: React.FC = () => {
         </Swiper>
       </div>
       <div className="bg-gray-700 p-4 lg:p-1 rounded-lg w-full sm:w-[500px] md:w-[600px] lg:w-[700px]">
-        <Today />
+        <Today weatherData={weatherData} />
       </div>
     </div>
   );

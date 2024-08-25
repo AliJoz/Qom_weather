@@ -1,22 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import React, { useState, useContext } from "react";
+import { useNavigate, useParams, Navigate } from "react-router-dom";
 import MainApp from "../main";
+import { DataContext } from "../../Axsios/DataProviderProps";
 
 const Main: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>('');
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
-  const navigate = useNavigate(); // استفاده از useNavigate برای هدایت به مسیر جدید
+  const navigate = useNavigate(); 
 
   const options = [
-    "منطقه یک",
-    "منطقه دو",
     "منطقه سه",
-    "منطقه چهار",
-    "منطقه پنج",
-    "منطقه شش",
-    "منطقه هفت",
     "منطقه هشت",
   ];
 
@@ -29,14 +23,14 @@ const Main: React.FC = () => {
   const handleOptionClick = (option: string) => {
     setInputValue(option);
     setShowDropdown(false);
-    navigate(`/region/${option}`); // هدایت به مسیر جدید بر اساس انتخاب کاربر
+    navigate(`/region/${option}`); 
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
     if (event.target.value.trim() !== '') {
       setShowDropdown(true);
-      setHighlightedIndex(-1); // ریست کردن شاخص گزینه هایلایت شده
+      setHighlightedIndex(-1); 
     } else {
       setShowDropdown(false);
     }
@@ -66,9 +60,40 @@ const Main: React.FC = () => {
     option.toLowerCase().includes(inputValue.toLowerCase())
   );
 
+  //
+
+  type RegionDataType = {
+    [key: string]: {
+        info: string;
+        deviceId: number;
+    };
+  };
+
+  const regionData: RegionDataType = {
+    "منطقه سه": { info: "اطلاعات مربوط به منطقه سه", deviceId: 1 },
+    "منطقه پنج": { info: "اطلاعات مربوط به منطقه پنج", deviceId: 2 },
+  };
+
+  const { region } = useParams<{ region?: string }>();
+  const data = useContext(DataContext);
+
+  let filteredData = data;
+  let info = "تمام داده‌های موجود";
+
+  if (region && regionData[region]) {
+    const { deviceId } = regionData[region];
+    filteredData = data.filter(item => item.device_id === deviceId);
+    info = regionData[region].info;
+  } else if (!region) {
+    const deviceIds = Object.values(regionData).map(region => region.deviceId);
+    filteredData = data.filter(item => deviceIds.includes(item.device_id));
+    info = "اطلاعات مربوط به هر دو منطقه";
+  } else {
+    return <Navigate to="../NotFound/notFound" replace />;
+  }
+
   return (
     <div className="flex flex-row-reverse h-screen bg-gray-800 text-white">
-     
       <div className="flex flex-col flex-1">
         <div className="flex justify-end p-6 pr-30">
           <div className="relative">
@@ -79,7 +104,7 @@ const Main: React.FC = () => {
               value={inputValue}
               onClick={handleInputClick}
               onChange={handleInputChange}
-              onKeyDown={handleKeyDown} // مدیریت رویدادهای صفحه‌کلید
+              onKeyDown={handleKeyDown}
             />
             {showDropdown && filteredOptions.length > 0 && (
               <ul className="absolute z-10 w-96 bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
@@ -90,7 +115,7 @@ const Main: React.FC = () => {
                       highlightedIndex === index ? 'bg-gray-600' : ''
                     }`}
                     onClick={() => handleOptionClick(option)}
-                    onMouseEnter={() => setHighlightedIndex(index)} // تغییر شاخص هنگام hover کردن
+                    onMouseEnter={() => setHighlightedIndex(index)}
                   >
                     {option}
                   </li>
@@ -99,7 +124,7 @@ const Main: React.FC = () => {
             )}
           </div>
         </div>
-        <MainApp />
+        <MainApp weatherData={filteredData} />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import { DataContext } from "../../Axsios/DataProviderProps"; // مسیر مربوط به DataContext
 
 interface WeatherData {
   id: number;
@@ -14,9 +13,7 @@ interface WeatherData {
   create_date: string;
 }
 
-const useFilteredWeatherData = () => {
-  const data = useContext(DataContext);
-
+const useFilteredWeatherData = (weatherData: WeatherData[]) => {
   // تابعی برای استخراج ساعت از time
   const extractHour = (time: string): string => {
     const timePart = time.split("T")[1]; // استخراج بخش زمان از تاریخ و زمان
@@ -25,7 +22,7 @@ const useFilteredWeatherData = () => {
   };
 
   // فیلتر کردن داده‌ها برای امروز و ساعت جاری
-  const filteredData = data.filter((item: WeatherData) => {
+  const filteredData = weatherData.filter((item) => {
     const datePart = item.time.split("T")[0];
     const [year, month, day] = datePart.split("-");
 
