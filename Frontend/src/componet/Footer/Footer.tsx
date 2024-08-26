@@ -12,30 +12,30 @@ import {
 
 const Footer: React.FC = () => {
   return (
-    <footer  className="bg-gradient-to-r from-blue-900 to-purple-900 text-white p-8  bottom-0 left-0 w-full ">
+    <footer  className="bg-gradient-to-r from-zinc-600 to-zinc-900 text-white ite p-8  bottom-0 left-0 w-full ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo and Address */}
-        <div className="flex flex-col items-center md:items-start font-yekan space-y-5">
+        <div className="flex flex-col items-center md:items-start font-yekan space-y-5 ">
           <img
             src="/img/footer/ShahrdariLogo.png"
             alt="Logo"
             className="w-36 mb-4"
           />
-          <div className="flex items-center mb-2 hover:text-zinc-400 cursor-pointer">
+          <div className="flex items-center mb-2 hover:text-red-400 cursor-pointer">
             <FaMapMarkerAlt className="ml-2" />
             <p>قم، بلوار امام موسی صدر (خاکفرج)</p>
           </div>
-          <div className="flex items-center mb-2 hover:text-zinc-400 cursor-pointer">
+          <div className="flex items-center mb-2 hover:text-red-400 cursor-pointer">
             <FaPhoneAlt className="ml-2" />
             <p>025-24400000</p>
           </div>
-          <div className="flex items-center mb-2 hover:text-zinc-400 cursor-pointer">
+          <div className="flex items-center mb-2 hover:text-red-400 cursor-pointer">
             <FaIdBadge className="ml-2" />
             <p>مرکز ارتباطات مردمی: 137</p>
           </div>
           <div className="flex items-center">
             <FaEnvelope className="ml-2" />
-            <a href="mailto:news@qom.ir" className="hover:text-zinc-400">
+            <a href="mailto:news@qom.ir" className="hover:text-red-400">
               پست الکترونیکی: news@qom.ir
             </a>
           </div>
@@ -46,32 +46,32 @@ const Footer: React.FC = () => {
           <h4 className="text-lg font-bold mb-4">دسته‌های مهم</h4>
           <ul>
             <li className="mb-2">
-              <Link to="https://qom.ir/" className="hover:text-zinc-400">
+              <Link to="https://qom.ir/" className="hover:text-red-400">
                 اخبار ویژه
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-zinc-400">
+            <Link to="https://qom.ir/" className="hover:text-red-400">
                 اخبار عمومی
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-zinc-400">
+            <Link to="https://qom.ir/" className="hover:text-red-400">
                 اخبار شهردار
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-zinc-400">
+            <Link to="https://qom.ir/" className="hover:text-red-400">
                 اخبار شورا
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-zinc-400">
+            <Link to="https://qom.ir/" className="hover:text-red-400">
                 گزارش تصویری
               </Link>
             </li>
             <li>
-            <Link to="https://qom.ir/" className="hover:text-zinc-400">
+            <Link to="https://qom.ir/" className="hover:text-red-400">
                 گزارش ویدئویی
               </Link>
             </li>
@@ -83,12 +83,12 @@ const Footer: React.FC = () => {
           <h4 className="text-lg font-bold mb-4">سایر زبان‌ها</h4>
           <ul className="mb-8">
             <li className="mb-2">
-              <a href="#" className="hover:text-zinc-400">
+              <a href="#" className="hover:text-red-400">
                 English
               </a>
             </li>
             <li>
-              <a href="#" className="hover:text-zinc-400">
+              <a href="#" className="hover:text-red-400">
                 العربیه
               </a>
             </li>
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
               aria-label={""}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-500"
+              className="hover:text-red-500"
             >
               <svg
                 fill="currentColor"
@@ -120,7 +120,7 @@ const Footer: React.FC = () => {
               aria-label={""}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-500"
+              className="hover:text-red-500"
             >
               <svg
                 id="Aparat"
@@ -139,7 +139,7 @@ const Footer: React.FC = () => {
               aria-label={""}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-500 text-2xl "
+              className="hover:text-red-500 text-2xl "
             >
               <FaInstagram />
             </Link>
@@ -149,7 +149,7 @@ const Footer: React.FC = () => {
               aria-label={""}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-500"
+              className="hover:text-red-500"
             >
               <svg
                 id="Eita"
@@ -168,7 +168,7 @@ const Footer: React.FC = () => {
               target="_blank"
               aria-label={""}
               rel="noopener noreferrer"
-              className="hover:text-gray-500 text-2xl"
+              className="hover:text-red-500 text-2xl"
             >
               <FaTwitter />
             </Link>
@@ -178,7 +178,7 @@ const Footer: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={""}
-              className="hover:text-gray-500 text-2xl  "
+              className="hover:text-red-500 text-2xl  "
             >
               <FaFacebook />
             </Link>

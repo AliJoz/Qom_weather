@@ -45,7 +45,7 @@ export default {
       },
       backgroundImage: {
         boxFooter:
-          "linear-gradient(61deg, rgba(144,134,134,1) 22%, rgba(254,254,254,1) 100%)",
+          " linear-gradient(61deg, rgba(144,134,134,1) 22%, rgba(254,254,254,1) 100%)",
       },
     },
     screens: {
@@ -57,10 +57,10 @@ export default {
     },
   },
   plugins: [
+    require("tailwind-scrollbar"),
     function ({ addVariant }) {
       addVariant("child", "&>*");
       addVariant("child-hover", "&>*:hover");
     },
-    require('tailwind-scrollbar'),
   ],
 };

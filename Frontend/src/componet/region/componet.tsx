@@ -8,7 +8,7 @@ function FeatureCards() {
   return (
     <div className="flex flex-col h-screen justify-center items-center bg-dark-blue p-4 space-y-8">
       {/* Card 1: Permanent Support */}
-      <div className="card flex-1 max-w-md w-full bg-gradient-to-r from-gray-800 to-gray-900 p-6 rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-105">
+      <div className="card flex-1 max-w-md w-full bg-gradient-to-r from-gray-800 to-gray-900 p-6 rounded-xl shadow-xl transform transition-transform duration-300 hover:scale-110">
         <div className="card-header flex justify-center items-center space-x-2 pb-12">
           <div className="card-icon bg-yellow-500 p-3 rounded-full shadow-lg w-16 h-16">
             {/* SVG Icon for Support */}

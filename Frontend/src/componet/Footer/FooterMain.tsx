@@ -7,7 +7,7 @@ const MainFooter: React.FC = () => {
     <>
     
       <div
-        className="hover:scrollbar-thumb-sky-500 scrollbar scrollbar-thumb-neutral-50 scrollbar-track-zinc-900 bg-gray-800 h-screen overflow-auto w-[95%]"
+        className="hover:scrollbar-thumb-sky-500 scrollbar scrollbar-thumb-neutral-50 scrollbar-track-zinc-900 bg-gray-800 h-screen overflow-auto w-[100%]"
         dir="rtl"
       >
         <Quiz />

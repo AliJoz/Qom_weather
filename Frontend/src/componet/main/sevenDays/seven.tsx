@@ -11,7 +11,6 @@ const DateDisplay: React.FC = () => {
   // ایجاد آرایه‌ای برای ذخیره تاریخ‌ها
   const dates: string[] = [];
 
-  // پر کردن آرایه با تاریخ‌های روزانه از تاریخ فعلی تا 7 روز پیش
   for (let i = 0; i <= 7; i++) {
     const date = new Date();
     date.setDate(currentDate.getDate() - i);
