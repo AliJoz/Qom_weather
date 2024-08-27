@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import useLast30Days from "../hook/30dayes/showdate";
-import { DataContext } from "../Axsios/DataProviderProps";
+import { DataContext } from "../hook/Axsios/DataProviderProps";
 import useWeatherData from "../hook/sevenDay/seven";
 
 interface WeatherData {
@@ -25,10 +25,10 @@ const DateDisplay: React.FC = () => {
   for (let i = 0; i < 30; i++) {
     const date = new Date();
     date.setDate(date.getDate() - i);
-// console.log(weatherData);
+    // console.log(weatherData);
 
     const formattedDate = date.toISOString().split("T")[0];
-   
+
     const { minTemp, maxTemp } = useWeatherData(formattedDate, weatherData);
 
     // بررسی اگر مقادیر minTemp و maxTemp معتبر باشند

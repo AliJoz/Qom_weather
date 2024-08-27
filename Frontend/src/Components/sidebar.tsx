@@ -8,10 +8,8 @@ const Sidebar: React.FC = () => {
       <div className="flex flex-col items-center bg-slate-600 text-white w-20 h-full py-6">
         {/* Logo */}
         <div className="mb-6">
-          <Link to="/" className="bg-slate-400 w-12 h-12 flex items-center justify-center rounded-xl">
-            <svg className="w-6 h-6">
-              <use href="#wind"></use>
-            </svg>
+          <Link to="/" className=" w-16 h-16 flex items-center justify-center rounded-full">
+            <img src="/icons/Qweather/Qw.png" alt="Q icons" className="bg-p" />
           </Link>
         </div>
         {/* Menu Items */}

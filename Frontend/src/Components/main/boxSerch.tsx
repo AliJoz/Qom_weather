@@ -1,21 +1,18 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 import MainApp from "../main";
-import { DataContext } from "../../Axsios/DataProviderProps";
+import { DataContext } from "../../hook/Axsios/DataProviderProps";
 
 const Main: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>('');
+  const [inputValue, setInputValue] = useState<string>("");
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const options = [
-    "منطقه سه",
-    "منطقه هشت",
-  ];
+  const options = ["منطقه سه", "منطقه هشت"];
 
   const handleInputClick = () => {
-    if (inputValue.trim() !== '') {
+    if (inputValue.trim() !== "") {
       setShowDropdown(true);
     }
   };
@@ -23,14 +20,14 @@ const Main: React.FC = () => {
   const handleOptionClick = (option: string) => {
     setInputValue(option);
     setShowDropdown(false);
-    navigate(`/region/${option}`); 
+    navigate(`/region/${option}`);
   };
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-    if (event.target.value.trim() !== '') {
+    if (event.target.value.trim() !== "") {
       setShowDropdown(true);
-      setHighlightedIndex(-1); 
+      setHighlightedIndex(-1);
     } else {
       setShowDropdown(false);
     }
@@ -39,15 +36,16 @@ const Main: React.FC = () => {
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (!showDropdown) return;
 
-    if (event.key === 'ArrowDown') {
-      setHighlightedIndex((prevIndex) => 
-        (prevIndex + 1) % filteredOptions.length
+    if (event.key === "ArrowDown") {
+      setHighlightedIndex(
+        (prevIndex) => (prevIndex + 1) % filteredOptions.length
       );
-    } else if (event.key === 'ArrowUp') {
-      setHighlightedIndex((prevIndex) =>
-        (prevIndex + filteredOptions.length - 1) % filteredOptions.length
+    } else if (event.key === "ArrowUp") {
+      setHighlightedIndex(
+        (prevIndex) =>
+          (prevIndex + filteredOptions.length - 1) % filteredOptions.length
       );
-    } else if (event.key === 'Enter') {
+    } else if (event.key === "Enter") {
       if (highlightedIndex >= 0 && highlightedIndex < filteredOptions.length) {
         handleOptionClick(filteredOptions[highlightedIndex]);
       } else {
@@ -56,7 +54,7 @@ const Main: React.FC = () => {
     }
   };
 
-  const filteredOptions = options.filter(option =>
+  const filteredOptions = options.filter((option) =>
     option.toLowerCase().includes(inputValue.toLowerCase())
   );
 
@@ -64,8 +62,8 @@ const Main: React.FC = () => {
 
   type RegionDataType = {
     [key: string]: {
-        info: string;
-        deviceId: number;
+      info: string;
+      deviceId: number;
     };
   };
 
@@ -82,11 +80,13 @@ const Main: React.FC = () => {
 
   if (region && regionData[region]) {
     const { deviceId } = regionData[region];
-    filteredData = data.filter(item => item.device_id === deviceId);
+    filteredData = data.filter((item) => item.device_id === deviceId);
     info = regionData[region].info;
   } else if (!region) {
-    const deviceIds = Object.values(regionData).map(region => region.deviceId);
-    filteredData = data.filter(item => deviceIds.includes(item.device_id));
+    const deviceIds = Object.values(regionData).map(
+      (region) => region.deviceId
+    );
+    filteredData = data.filter((item) => deviceIds.includes(item.device_id));
     info = "اطلاعات مربوط به هر دو منطقه";
   } else {
     return <Navigate to="../NotFound/notFound" replace />;
@@ -112,7 +112,7 @@ const Main: React.FC = () => {
                   <li
                     key={index}
                     className={`p-2 cursor-pointer ${
-                      highlightedIndex === index ? 'bg-gray-600' : ''
+                      highlightedIndex === index ? "bg-gray-600" : ""
                     }`}
                     onClick={() => handleOptionClick(option)}
                     onMouseEnter={() => setHighlightedIndex(index)}

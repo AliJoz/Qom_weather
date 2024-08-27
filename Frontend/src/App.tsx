@@ -4,13 +4,13 @@ import { Routes, Route } from "react-router-dom";
 import MainFooter from "./componet/Footer/FooterMain";
 import Mainregion from "./componet/region/Mainregion";
 import NotFound from "./componet/NotFound/notFound";
-import DataProvider from "./Axsios/DataProviderProps";
+import DataProvider from "./hook/Axsios/DataProviderProps";
 import Loders from "./componet/Loder/Loder";
 import Map from "./componet/chart/chart";
 import Sidebar from "./componet/sidebar";
 import Icons from "./componet/icons";
 import Region from "./componet/region/componet";
-import DatabaseNotfound from "./componet/NotFound/database"
+import DatabaseNotfound from "./componet/NotFound/database";
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +35,10 @@ const App: React.FC = () => {
                 <Route path="/setting" element={<MainFooter />} />
                 <Route path="/region" element={<Region />} />
                 <Route path="/region/:region" element={<Mainregion />} />
-                <Route path="map/NotFound/database" element={<DatabaseNotfound />} />
+                <Route
+                  path="map/NotFound/database"
+                  element={<DatabaseNotfound />}
+                />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
