@@ -64,7 +64,7 @@ const TemperatureChart: React.FC = () => {
   const reversedDaysData = [...daysData].reverse();
 
   return (
-    <div className="bg-zinc-800 h-screen w-full">
+    <div className="bg-neutral-200 h-screen w-full">
       <ResponsiveContainer width="100%" height={600}>
         <BarChart
           data={reversedDaysData}
@@ -73,7 +73,7 @@ const TemperatureChart: React.FC = () => {
           <CartesianGrid strokeDasharray="2 4" />
           <XAxis
             dataKey="date"
-            tick={{ fontSize: 12, fill: "#ffffff", fontFamily: "IRANSans" }}
+            tick={{ fontSize: 12, fill: "#212121", fontFamily: "IRANSans" }}
           />
           <YAxis />
           <Tooltip />

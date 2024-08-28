@@ -62,19 +62,27 @@ const TemperatureChart: React.FC = () => {
   const reversedDaysData = [...daysData].reverse();
 
   return (
-    <ResponsiveContainer width="100%" height={400}>
-      <LineChart
-        data={reversedDaysData}
-        margin={{ top: 20, right: 30, left: 10, bottom: 5 }}
-      >
-        <CartesianGrid strokeDasharray="2 3" />
-        <XAxis dataKey="date" />
-        <YAxis label={{ value: 'میزان باد (متر/ثانیه)', angle: -90, position: 'insideLeft' }} />
-        <Tooltip />
-        <Legend />
-        <Line type="monotone" dataKey="سرعت" stroke="#8884d8" strokeWidth={2} />
-      </LineChart>
-    </ResponsiveContainer>
+    <div className="bg-neutral-200 p-4 rounded-lg"> {/* اضافه کردن رنگ پس‌زمینه */}
+      <ResponsiveContainer width="100%" height={600}>
+        <LineChart
+          data={reversedDaysData}
+          margin={{ top: 20, right: 30, left: 5, bottom: 2 }}
+        >
+          <CartesianGrid strokeDasharray="2 3" />
+          <XAxis dataKey="date" />
+          <YAxis
+            label={{
+              value: "میزان باد (متر/ثانیه)",
+              angle: -90,
+              position: "insideLeft",
+            }}
+          />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="سرعت" stroke="#8884d8" strokeWidth={2} />
+        </LineChart>
+      </ResponsiveContainer>
+    </div>
   );
 };
 

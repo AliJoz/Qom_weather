@@ -1,15 +1,28 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
 import MainApp from "./StructureMain";
 import { DataContext } from "../../Hook/Axsios/DataProviderProps";
 import LiveClock from "./LiveClock/LiveClock";
+
 const Main: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(
+    localStorage.getItem("theme") === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
   const navigate = useNavigate();
 
   const options = ["منطقه سه", "منطقه هشت"];
+
+  // Effect to apply the initial theme state on component mount
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDarkMode]);
 
   const handleInputClick = () => {
     if (inputValue.trim() !== "") {
@@ -37,14 +50,9 @@ const Main: React.FC = () => {
     if (!showDropdown) return;
 
     if (event.key === "ArrowDown") {
-      setHighlightedIndex(
-        (prevIndex) => (prevIndex + 1) % filteredOptions.length
-      );
+      setHighlightedIndex((prevIndex) => (prevIndex + 1) % filteredOptions.length);
     } else if (event.key === "ArrowUp") {
-      setHighlightedIndex(
-        (prevIndex) =>
-          (prevIndex + filteredOptions.length - 1) % filteredOptions.length
-      );
+      setHighlightedIndex((prevIndex) => (prevIndex + filteredOptions.length - 1) % filteredOptions.length);
     } else if (event.key === "Enter") {
       if (highlightedIndex >= 0 && highlightedIndex < filteredOptions.length) {
         handleOptionClick(filteredOptions[highlightedIndex]);
@@ -54,11 +62,7 @@ const Main: React.FC = () => {
     }
   };
 
-  const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(inputValue.toLowerCase())
-  );
-
-  //
+  const filteredOptions = options.filter((option) => option.toLowerCase().includes(inputValue.toLowerCase()));
 
   type RegionDataType = {
     [key: string]: {
@@ -83,23 +87,28 @@ const Main: React.FC = () => {
     filteredData = data.filter((item) => item.device_id === deviceId);
     info = regionData[region].info;
   } else if (!region) {
-    const deviceIds = Object.values(regionData).map(
-      (region) => region.deviceId
-    );
+    const deviceIds = Object.values(regionData).map((region) => region.deviceId);
     filteredData = data.filter((item) => deviceIds.includes(item.device_id));
     info = "اطلاعات مربوط به هر دو منطقه";
   } else {
     return <Navigate to="../NotFound/notFound" replace />;
   }
 
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
+
   return (
-    <div
-      className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative"
-      dir="ltr"
-    >
+    <div className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative" dir="ltr">
       <div className="w-72 absolute top-8 right-5 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700">
-        {" "}
-        <LiveClock />{" "}
+        <LiveClock />
       </div>
 
       <div className="flex flex-col flex-1 space-y-2 relative">
@@ -108,21 +117,19 @@ const Main: React.FC = () => {
             <input
               type="text"
               placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه"
-              className="flex p-2 w-96  border-slate-300 dark:bg-gray-700 text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm pl-12 3xl:w-80 h-full"
+              className="flex p-2 w-96 border-slate-300 dark:bg-gray-700 text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm pl-12 3xl:w-80 h-full"
               value={inputValue}
               onClick={handleInputClick}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
             />
             {showDropdown && filteredOptions.length > 0 && (
-              <ul className="absolute z-10 w-96 text-zink-900 text-zinc-600 bg-yellow-100 dark:bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
+              <ul className="absolute z-10 w-96 text-zinc-900 bg-yellow-100 dark:bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
                 {filteredOptions.map((option, index) => (
                   <li
                     key={index}
                     className={`p-2 cursor-pointer ${
-                      highlightedIndex === index
-                        ? " bg-yellow-300 text-zinc-800 dark:bg-gray-600"
-                        : ""
+                      highlightedIndex === index ? "bg-yellow-300 text-zinc-800 dark:bg-gray-600" : ""
                     }`}
                     onClick={() => handleOptionClick(option)}
                     onMouseEnter={() => setHighlightedIndex(index)}
@@ -134,11 +141,11 @@ const Main: React.FC = () => {
             )}
           </div>
         </div>
-        <div className=" absolute  left-[460px] top-2">
-          {/* {"icons "} */}
-          <svg className="w-9 h-9 text-zinc-700 dark:text-neutral-50">
-            <use href="#Sun"></use>
-          </svg>{" "}
+        <div className="absolute left-[460px] top-2" onClick={toggleDarkMode}>
+          {/* Dynamically render the correct icon based on isDarkMode */}
+          <svg className="w-9 h-9 text-salte-300 dark:text-neutral-200">
+            <use href={isDarkMode ? "#Sun" : "#Moon"}></use>
+          </svg>
         </div>
 
         <MainApp weatherData={filteredData} />
