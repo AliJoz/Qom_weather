@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
-import Main from "./componet/main/boxSerch";
+import Main from "./Components/MainShow/boxSerch";
 import { Routes, Route } from "react-router-dom";
-import MainFooter from "./componet/Footer/FooterMain";
-import Mainregion from "./componet/region/Mainregion";
-import NotFound from "./componet/NotFound/notFound";
-import DataProvider from "./hook/Axsios/DataProviderProps";
-import Loders from "./componet/Loder/Loder";
-import Map from "./componet/chart/chart";
-import Sidebar from "./componet/sidebar";
-import Icons from "./componet/icons";
-import Region from "./componet/region/componet";
-import DatabaseNotfound from "./componet/NotFound/database";
+import MainFooter from "./Components/Footer/FooterMain";
+import Mainregion from "./Components/Region/ShowMainRegion";
+import NotFound from "./Components/NotFound/notFound";
+import DataProvider from "./Hook/Axsios/DataProviderProps";
+import Loders from "./Components/Loder/Loder";
+import Map from "./Components/Chart/chart";
+import Sidebar from "./Components/Sidebar";
+import Icons from "./Components/Icons";
+import Region from "./Components/Region/StructureBtnRegion";
+import DatabaseNotfound from "./Components/NotFound/database";
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <Loders />
       ) : (
         <>
-          <div className="scrollbar  scrollbar-thumb-neutral-50 scrollbar-track-zinc-900 flex h-screen   overflow-auto">
+          <div className="scrollbar  scrollbar-thumb-neutral-50 scrollbar-track-zinc-900 flex h-screen   overflow-auto" dir="rtl">
             {/* محتوای اصلی */}
             <div className="flex-grow mr-20">
               {" "}

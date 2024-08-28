@@ -1,5 +1,5 @@
 import React from 'react';
-import useWeatherData from '../../../hook/sevenDay/seven'; // فرض بر این است که useWeatherData در فایل TT قرار دارد
+import useWeatherData from '../../../Hook/sevenDay/seven'; // فرض بر این است که useWeatherData در فایل TT قرار دارد
 
 const DateDisplay: React.FC = () => {
   // تابع برای فرمت تاریخ به صورت YYYY-MM-DD

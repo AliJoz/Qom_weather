@@ -11,8 +11,8 @@ import {
   Bar,
   ResponsiveContainer,
 } from "recharts";
-import { DataContext } from "../../hook/Axsios/DataProviderProps";
-import useWeatherData from "../../hook/sevenDay/seven";
+import { DataContext } from "../../Hook/Axsios/DataProviderProps";
+import useWeatherData from "../../Hook/sevenDay/seven";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 interface WeatherData {

@@ -1,7 +1,7 @@
 import React from "react";
-import Left from "./main/left";
-import Right from "./main/right";
-import Show from "./main/Show/Showtoday";
+import RightLive from "./RightLive";
+import LeftLive from "./LeftLive";
+import Show from "./Show/Showtoday";
 
 interface WeatherData {
   id: number;
@@ -27,14 +27,15 @@ const Main: React.FC<MainProps> = ({ weatherData }) => {
         {/* Pass weatherData to the Show component */}
         <Show weatherData={weatherData} />
       </div>
-      <div className="flex-1 lg:flex justify-between p-6 bg-gray-800 text-white grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <div>
-          {/* Pass weatherData to the Left component */}
-          <Left weatherData={weatherData} />
+      <div className="flex-1 lg:flex justify-between  p-6 bg-gray-800 text-white grid grid-cols-1 lg:grid-cols-2 gap-5">
+        <div className="mr-20 space-y-8 mt-30">
+          {/* Pass weatherData to the LeftLive component */}
+          <LeftLive weatherData={weatherData} />
         </div>
-        <div className="mr-20">
+
+        <div className="">
           {/* Pass weatherData to the Right component */}
-          <Right weatherData={weatherData} />
+          <RightLive weatherData={weatherData} />
         </div>
       </div>
     </>

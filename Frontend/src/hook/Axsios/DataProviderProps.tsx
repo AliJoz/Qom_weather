@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Loder from "../../componet/Loder/Loder";
+import Loder from "../../Components/Loder/Loder";
 interface WeatherData {
   id: number;
   temp: number;

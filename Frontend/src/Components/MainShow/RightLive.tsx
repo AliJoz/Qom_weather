@@ -1,6 +1,6 @@
 import React from 'react';
-import useWeatherData from '../../hook/sevenDay/seven';
-import ShowIcons from '../../hook/Showicons/Showiconday';
+import useWeatherData from '../../Hook/sevenDay/seven';
+import ShowIcons from '../../Hook/Showicons/Showiconday';
 
 interface WeatherData {
   id: number;
@@ -15,11 +15,11 @@ interface WeatherData {
   create_date: string;
 }
 
-interface LeftProps {
+interface RightProps {
   weatherData: WeatherData[];
 }
 
-const Left: React.FC<LeftProps> = ({ weatherData }) => {
+const Right: React.FC<RightProps> = ({ weatherData }) => {
   const getLast7DaysWithWeather = () => {
     const daysOfWeek = ['یکشنبه', 'دوشنبه', 'سه‌شنبه', 'چهارشنبه', 'پنج‌شنبه', 'جمعه', 'شنبه'];
     const daysData = [];
@@ -92,4 +92,4 @@ const Left: React.FC<LeftProps> = ({ weatherData }) => {
   );
 };
 
-export default Left;
+export default Right;

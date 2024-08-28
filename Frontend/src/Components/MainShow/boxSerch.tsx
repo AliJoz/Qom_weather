@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { useNavigate, useParams, Navigate } from "react-router-dom";
-import MainApp from "../main";
-import { DataContext } from "../../hook/Axsios/DataProviderProps";
-
+import MainApp from "./StructureMain";
+import { DataContext } from "../../Hook/Axsios/DataProviderProps";
+import LiveClock from  "./LiveClock/LiveClock.jsx";
 const Main: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
@@ -93,7 +93,11 @@ const Main: React.FC = () => {
   }
 
   return (
-    <div className="flex flex-row-reverse h-screen bg-gray-800 text-white ">
+    <div
+      className="flex flex-row-reverse h-screen bg-gray-800 text-white "
+      dir="ltr"
+    >
+      <div> <LiveClock /> </div>
       <div className="flex flex-col flex-1">
         <div className="flex justify-end p-6 pr-30">
           <div className="relative">

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import { DataContext } from "../../hook/Axsios/DataProviderProps";
-import Main from "../main";
+import { DataContext } from "../../Hook/Axsios/DataProviderProps";
+import Main from "../MainShow/StructureMain";
 
 type RegionDataType = {
   [key: string]: {

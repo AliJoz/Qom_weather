@@ -31,16 +31,16 @@ interface ViewWeatherProps {
   data: TimeBlock;
 }
 
-interface RightProps {
+interface LeftLiveProps {
   weatherData: WeatherData[];
 }
 
-const Right: React.FC<RightProps> = ({ weatherData }) => {
+const LeftLive: React.FC<LeftLiveProps> = ({ weatherData }) => {
   // استفاده از weatherData به عنوان ورودی برای نمایش داده‌ها
   const weatherDataArray = WeatherDisplay(weatherData);
 
   return (
-    <div className="flex flex-col space-y-4">
+    <div className="flex flex-col justify-between space-y-9">
       <div className="bg-gray-700 p-4 rounded-lg w-full sm:w-[400px] md:w-[550px] lg:w-[700px] mr-4">
         <h3 className="flex justify-end text-lg sm:text-xl mb-4 font-bold tracking-wide">
           امروز
@@ -62,11 +62,11 @@ const Right: React.FC<RightProps> = ({ weatherData }) => {
           ))}
         </Swiper>
       </div>
-      <div className="bg-gray-700 p-4 lg:p-1 rounded-lg w-full sm:w-[500px] md:w-[600px] lg:w-[700px]">
+      <div className="bg-gray-700 p-4 lg:p-1 rounded-lg w-full sm:w-[500px] md:w-[600px] lg:w-[700px]  ">
         <Today weatherData={weatherData} />
       </div>
     </div>
   );
 };
 
-export default Right;
+export default LeftLive;
