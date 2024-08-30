@@ -117,7 +117,7 @@ const Main: React.FC = () => {
 
   return (
     <div
-      className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative"
+      className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800    relative"
       dir="ltr"
     >
       <div className="hidden lg:block w-72 absolute top-6   right-0 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700 dark:text-white">
@@ -130,7 +130,7 @@ const Main: React.FC = () => {
             <input
               type="text"
               placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه "
-              className="flex mr-2 pl-6  md:p-2 w-56 md:w-96 lg:w-[460px] border-slate-300 dark:bg-gray-700 md:text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm sm:pl-12 3xl:w-80 h-full placeholder-sm md:placeholder-md placeholder:text-zinc-900 dark:placeholder:text-neutral-100 lg:placeholder-lg"
+              className="flex mr-2 pl-6  md:p-2 w-56 md:w-96 lg:w-[460px] border-slate-300 dark:bg-gray-700 md:text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm sm:pl-12 3xl:w-80 h-full placeholder-sm md:placeholder-md placeholder:text-zinc-500 dark:placeholder:text-neutral-100 lg:placeholder-lg"
               value={inputValue}
               onClick={handleInputClick}
               onChange={handleInputChange}

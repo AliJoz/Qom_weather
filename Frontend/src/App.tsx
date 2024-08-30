@@ -26,7 +26,7 @@ const App: React.FC = () => {
       ) : (
         <>
           <div
-            className="scrollbar  scrollbar-thumb-neutral-700 scrollbar-track-zinc-900 flex h-screen w-full  overflow-auto"
+            className="scrollbar  scrollbar-thumb-zinc-700 scrollbar-track-zinc-100 dark:scrollbar-thumb-zinc-100 dark:scrollbar-track-zinc-800  flex h-screen w-full  overflow-auto"
             dir="rtl"
           >
             {/* محتوای اصلی */}

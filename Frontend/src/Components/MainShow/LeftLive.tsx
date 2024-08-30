@@ -53,7 +53,7 @@ const LeftLive: React.FC<LeftLiveProps> = ({ weatherData }) => {
             300: {
               slidesPerView: 1,
             },
-            430: {
+            435: {
               slidesPerView: 2,
             },
             640: {

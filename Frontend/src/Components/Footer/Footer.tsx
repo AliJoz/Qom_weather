@@ -12,14 +12,14 @@ import {
 
 const Footer: React.FC = () => {
   return (
-    <footer  className="bg-gradient-to-r from-zinc-600 to-zinc-900 text-white ite p-8  bottom-0 left-0 w-full ">
+    <footer  className="pt-4  pl-8 bg-gradient-to-r from-neutral-100 to-neutral-300 dark:from-gray-700 dark:to-gray-800   left-0 w-full ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo and Address */}
         <div className="flex flex-col items-center md:items-start font-yekan space-y-5 ">
           <img
             src="/img/footer/ShahrdariLogo.png"
             alt="Logo"
-            className="w-36 mb-4"
+            className="w-36 mb-4 "
           />
           <div className="flex items-center mb-2 hover:text-red-400 cursor-pointer">
             <FaMapMarkerAlt className="ml-2" />

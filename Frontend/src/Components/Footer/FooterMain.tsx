@@ -7,11 +7,13 @@ const MainFooter: React.FC = () => {
     <>
     
       <div
-        className="hover:scrollbar-thumb-sky-500 scrollbar scrollbar-thumb-neutral-50 scrollbar-track-zinc-900 bg-gray-800 h-screen overflow-auto w-[100%]"
+        className="flex flex-col h-screen  bg-neutral-200 relative  dark:bg-gray-800 w-[100%]"
         dir="rtl"
       >
-        <Quiz />
-        <Footer />
+        <div className="h-2/3 "> <Quiz /></div>
+        <div className=" absolute top-15 mt-auto  lg:fixed h-1/3 bottom-28  w-full dark:text-neutral-100 "> <Footer />  </div>
+       
+       
       </div>
     </>
   );
