@@ -8,19 +8,27 @@ const Main: React.FC = () => {
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
   const [highlightedIndex, setHighlightedIndex] = useState<number>(-1);
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(
-    localStorage.getItem("theme") === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches
-  );
-  const navigate = useNavigate();
 
+  // Initialize dark mode state from localStorage or system preference
+  const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      return savedTheme === "dark";
+    }
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
+  const navigate = useNavigate();
   const options = ["منطقه سه", "منطقه هشت"];
 
-  // Effect to apply the initial theme state on component mount
+  // Effect to apply the initial theme state on component mount and update localStorage
   useEffect(() => {
     if (isDarkMode) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   }, [isDarkMode]);
 
@@ -95,36 +103,29 @@ const Main: React.FC = () => {
   }
 
   const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    if (!isDarkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
+    setIsDarkMode((prevMode) => !prevMode);
   };
 
   return (
     <div className="flex flex-row-reverse h-screen bg-neutral-200 dark:bg-gray-800 text-   relative" dir="ltr">
-      <div className="w-72 absolute top-8 right-5 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700">
+      <div className="hidden lg:block w-72 absolute top-8 right-5 text-xl tracking-wide mr-7 font-bold font-yekan text-zinc-700 dark:text-white">
         <LiveClock />
       </div>
 
       <div className="flex flex-col flex-1 space-y-2 relative">
         <div className="flex justify-end p-6 pr-30">
-          <div className="absolute top-2 left-[510px]">
+          <div className="absolute top-2 left-12  md:left-50 lg:left-[510px]">
             <input
               type="text"
               placeholder="لطفا منطقه مورد نظر را وارد کنید:منطقه سه"
-              className="flex p-2 w-96 border-slate-300 dark:bg-gray-700 text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm pl-12 3xl:w-80 h-full"
+              className="flex p-2 w-60 md:w-96 border-slate-300 dark:bg-gray-700 text-right pr-2 rounded-lg font-yekan bg-neutral-100 text-zinc-700 dark:bg-white/5 dark:text-white text-sm pl-12 3xl:w-80 h-full"
               value={inputValue}
               onClick={handleInputClick}
               onChange={handleInputChange}
               onKeyDown={handleKeyDown}
             />
             {showDropdown && filteredOptions.length > 0 && (
-              <ul className="absolute z-10 w-96 text-zinc-900 bg-yellow-100 dark:bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
+              <ul className="absolute z-10 w-60 md:w-96 text-zinc-900 bg-yellow-100 dark:bg-gray-700 text-right mt-2 rounded-lg shadow-lg">
                 {filteredOptions.map((option, index) => (
                   <li
                     key={index}
@@ -141,7 +142,7 @@ const Main: React.FC = () => {
             )}
           </div>
         </div>
-        <div className="absolute left-[460px] top-2" onClick={toggleDarkMode}>
+        <div className="absolute left-1 md:left-[460px] top-1 md:top-2" onClick={toggleDarkMode}>
           {/* Dynamically render the correct icon based on isDarkMode */}
           <svg className="w-9 h-9 text-salte-300 dark:text-neutral-200">
             <use href={isDarkMode ? "#Sun" : "#Moon"}></use>

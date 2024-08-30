@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { useParams, Navigate } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { DataContext } from "../../Hook/Axsios/DataProviderProps";
 import Main from "../MainShow/StructureMain";
 
@@ -18,6 +18,7 @@ const regionData: RegionDataType = {
 const MainRegion: React.FC = () => {
   const { region } = useParams<{ region?: string }>();
   const data = useContext(DataContext);
+  const navigate = useNavigate(); // استفاده از useNavigate
 
   let filteredData = data;
   let info = "تمام داده‌های موجود";
@@ -27,7 +28,6 @@ const MainRegion: React.FC = () => {
     filteredData = data.filter((item) => item.device_id === deviceId);
     info = regionData[region].info;
   } else if (!region) {
-    // اگر هیچ منطقه‌ای انتخاب نشده باشد، داده‌های هر دو منطقه را فیلتر کنید
     const deviceIds = Object.values(regionData).map(
       (region) => region.deviceId
     );
@@ -35,6 +35,17 @@ const MainRegion: React.FC = () => {
     info = "اطلاعات مربوط به هر دو منطقه";
   } else {
     return <Navigate to="../NotFound/notFound" replace />;
+  }
+
+  useEffect(() => {
+    if (filteredData.length === 0) {
+      navigate("/region/NotFound/database");
+    }
+  }, [filteredData, navigate]); // افزودن وابستگی‌ها
+
+  // نمایش null تا زمان تغییر مسیر
+  if (filteredData.length === 0) {
+    return null;
   }
 
   return (

@@ -9,10 +9,9 @@ import Loders from "./Components/Loder/Loder";
 import MapTemp from "./Components/Chart/chartTemp";
 import MapSpeed from "./Components/Chart/CartSpeed";
 import Sidebar from "./Components/Sidebar";
-import Icons from "./Components/Icons";
 import Region from "./Components/Region/StructureBtnRegion";
 import DatabaseNotfound from "./Components/NotFound/database";
-import Test from './test/Test'
+import Test from "./test/Test";
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
@@ -26,9 +25,12 @@ const App: React.FC = () => {
         <Loders />
       ) : (
         <>
-          <div className="scrollbar  scrollbar-thumb-neutral-700 scrollbar-track-zinc-900 flex h-screen  overflow-auto" dir="rtl">
+          <div
+            className="scrollbar  scrollbar-thumb-neutral-700 scrollbar-track-zinc-900 flex h-screen w-full  overflow-auto"
+            dir="rtl"
+          >
             {/* محتوای اصلی */}
-          
+
             <div className="flex-grow mr-20">
               {" "}
               {/* <Test /> */}
@@ -40,17 +42,19 @@ const App: React.FC = () => {
                 <Route path="/setting" element={<MainFooter />} />
                 <Route path="/region" element={<Region />} />
                 <Route path="/region/:region" element={<Mainregion />} />
+
                 <Route
                   path="map/NotFound/database"
                   element={<DatabaseNotfound />}
                 />
+              
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </div>
 
             {/* سایدبار و آیکون‌ها */}
-            <div className="fixed top-0 right-0 h-full w-20 bg-gray-800 text-white z-10">
-              <Icons />
+            <div className="fixed top-0 right-0 h-full w-20 bg-neutral-200  dark:bg-gray-800 text-white z-10">
+              
               <Sidebar />
             </div>
           </div>

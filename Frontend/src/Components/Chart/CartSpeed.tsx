@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -46,16 +46,22 @@ const TemperatureChart: React.FC = () => {
     ) {
       const سرعت = (minTemp + maxTemp) / 2;
       daysData.push({
-        date: date.toLocaleDateString("fa-IR"), 
-        سرعت: parseFloat(سرعت.toFixed(2)), 
+        date: date.toLocaleDateString("fa-IR"),
+        سرعت: parseFloat(سرعت.toFixed(2)),
       });
     }
   }
 
-  // Check if there is no data, and navigate to the 404 page if true
+  // Effect to navigate if no data is present
+  useEffect(() => {
+    if (daysData.length === 0) {
+      navigate("/map/NotFound/database");
+    }
+  }, [daysData, navigate]); // Add dependencies
+
+  // Return null while the navigation happens
   if (daysData.length === 0) {
-    navigate("/map/NotFound/database"); // Use navigate correctly
-    return null; // Return null to prevent rendering
+    return null;
   }
 
   // Reverse the data for correct display

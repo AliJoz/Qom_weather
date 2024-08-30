@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   LineChart,
   Line,
@@ -13,7 +13,7 @@ import {
 } from "recharts";
 import { DataContext } from "../../Hook/Axsios/DataProviderProps";
 import useWeatherData from "../../Hook/sevenDay/seven";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 interface WeatherData {
   id: number;
@@ -30,7 +30,7 @@ interface WeatherData {
 
 const TemperatureChart: React.FC = () => {
   const weatherData = useContext(DataContext);
-  const navigate = useNavigate(); // Initialize navigate function
+  const navigate = useNavigate();
   const daysData: { date: string; minTemp: string; maxTemp: string }[] = [];
 
   for (let i = 0; i < 30; i++) {
@@ -54,10 +54,16 @@ const TemperatureChart: React.FC = () => {
     }
   }
 
-  // Check if there is no data, and navigate to the 404 page if true
-  if (daysData.length === 0) {
-    navigate("/map/NotFound/database"); // Use navigate correctly
-    return null; // Return null to prevent rendering
+  // Effect to navigate if no data is present
+  useEffect(() => {
+    if (!daysData.length) {
+      navigate("/map/NotFound/database");
+    }
+  }, [daysData, navigate]); // Add dependencies
+
+  // Return null while the navigation happens
+  if (!daysData.length) {
+    return null; 
   }
 
   // Reverse the data for correct display
