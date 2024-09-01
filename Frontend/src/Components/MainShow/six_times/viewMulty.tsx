@@ -80,11 +80,11 @@ const ViewWeather: React.FC<ViewWeatherProps> = ({ data }) => {
             className="w-14 h-14 sm:w-16 sm:h-16 md:w-18 md:h-18"
           />
           <div className="flex items-center justify-center space-x-1">
-            <span className="text-base font-bold text-red-600   ">
+            <span className="text-base font-iranBold font-bold text-red-600   ">
               {maxTemp.toFixed(2)}
             </span>
             <span className="text-zinc-800 dark:text-zinc-50 text-lg">/</span>
-            <span className=" text-base font-bold  text-blue-500 dark:text-blue-400">
+            <span className=" text-base font-bold font-iranBold  text-blue-500 dark:text-blue-400">
               {minTemp.toFixed(2)}
             </span>
           </div>

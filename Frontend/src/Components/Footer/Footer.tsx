@@ -12,14 +12,19 @@ import {
 
 const Footer: React.FC = () => {
   return (
-    <footer  className="pt-4  pl-8 bg-gradient-to-r from-neutral-100 to-neutral-300 dark:from-gray-700 dark:to-gray-800   left-0 w-full ">
+    <footer className="pt-4  pl-8 bg-gradient-to-r from-neutral-100 to-neutral-300 dark:from-gray-700 dark:to-gray-800   left-0 w-full ">
       <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
         {/* Logo and Address */}
         <div className="flex flex-col items-center md:items-start font-yekan space-y-5 ">
           <img
-            src="/img/footer/ShahrdariLogo.png"
-            alt="Logo"
-            className="w-36 mb-4 "
+            src="img/footer/Dark.png"
+            alt="Logos"
+            className="w-36 mb-4 block dark:hidden"
+          />
+          <img
+            src="img/footer/ShahrdariLight .png"
+            alt="Logo Dark"
+            className="w-36 mb-4 hidden dark:block"
           />
           <div className="flex items-center mb-2 hover:text-red-400 cursor-pointer">
             <FaMapMarkerAlt className="ml-2" />
@@ -51,27 +56,27 @@ const Footer: React.FC = () => {
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-red-400">
+              <Link to="https://qom.ir/" className="hover:text-red-400">
                 اخبار عمومی
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-red-400">
+              <Link to="https://qom.ir/" className="hover:text-red-400">
                 اخبار شهردار
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-red-400">
+              <Link to="https://qom.ir/" className="hover:text-red-400">
                 اخبار شورا
               </Link>
             </li>
             <li className="mb-2">
-            <Link to="https://qom.ir/" className="hover:text-red-400">
+              <Link to="https://qom.ir/" className="hover:text-red-400">
                 گزارش تصویری
               </Link>
             </li>
             <li>
-            <Link to="https://qom.ir/" className="hover:text-red-400">
+              <Link to="https://qom.ir/" className="hover:text-red-400">
                 گزارش ویدئویی
               </Link>
             </li>

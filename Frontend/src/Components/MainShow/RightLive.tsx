@@ -94,9 +94,9 @@ const Right: React.FC<RightProps> = ({ weatherData }) => {
                 className="w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 -ml-2 pb-2 "
               />
               <div className="flex md:px-20 ">
-                <span className="text-[10px] x:text-sm  md:text-lg font-bold text-red-600/95 ">{day.maxTemp.toFixed(2)}°</span>
+                <span className="text-[10px] x:text-sm  md:text-lg font-bold font-iranBold text-red-600/95 ">{day.maxTemp.toFixed(2)}°</span>
                 <span className="mx-1 text-zinc-800 dark:text-zinc-50 text-xl ">/</span>
-                <span className="text-[10px] x:text-sm font-bold md:text-lg  text-blue-500 dark:text-blue-400">{day.minTemp.toFixed(2)}°</span>
+                <span className="text-[10px] x:text-sm font-bold md:text-lg  font-iranBold text-blue-500 dark:text-blue-400">{day.minTemp.toFixed(2)}°</span>
               </div>
             </span>
             <span className="font-yekan text-xs x:text-base sm:text-base md:text-xl ">{day.day}</span>

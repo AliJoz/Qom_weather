@@ -8,12 +8,7 @@ export default {
         lg: "920px",
       },
       colors: {
-        brown: {
-          100: "#ECE0D1",
-          300: "#DBC1AC",
-          600: "#967259",
-          900: "#634832",
-        },
+        
         bg_log: "#242A38",
       },
       boxShadow: {
@@ -28,10 +23,11 @@ export default {
         "4xl": "2rem",
       },
       fontFamily: {
-        iranBlack: "Iran Block",
+        "iranBlack": "Iran Block",
         "iran-Dem": "Iran Demibold",
-        yekan: "iran yekan",
-        bold: "iran bold",
+        "yekan": "iran yekan",
+        "bold": "iran bold",
+        "iranBold":"Iran SanasBold"
       },
       letterSpacing: {
         tightest: "-0.065em",

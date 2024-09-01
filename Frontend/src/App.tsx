@@ -53,7 +53,7 @@ const App: React.FC = () => {
             </div>
 
             {/* سایدبار و آیکون‌ها */}
-            <div className="fixed top-0 right-0 h-full w-20 bg-neutral-200  dark:bg-gray-800 text-white z-10">
+            <div className="fixed top-0 right-0 h-full md:w-20 bg-neutral-200  dark:bg-gray-800 text-white z-10">
               
               <Sidebar />
             </div>

@@ -51,7 +51,7 @@ const LeftLive: React.FC<LeftLiveProps> = ({ weatherData }) => {
           slidesPerView={5}
           breakpoints={{
             300: {
-              slidesPerView: 1,
+              slidesPerView: 2,
             },
             435: {
               slidesPerView: 2,
